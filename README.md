@@ -3,8 +3,9 @@
 An exact single-machine implementation of the Databricks Shopping Sessions
 Buildathon task. The C++20 engine handles strict CSV parsing, linked identities,
 global event deduplication, sessions, last-click attribution and campaign assists.
-PyArrow converts native column buffers to Parquet; there are no Python row loops
-in the production pipeline.
+The current runtime also writes Parquet directly in C++ using Apache Arrow and
+Parquet libraries distributed by the pinned PyArrow 22.0.0 wheel. It launches no
+Python interpreter and produces no intermediate column files.
 
 ## Build and run
 
@@ -31,15 +32,22 @@ locations use the standard environment variables. Diagnostics go to stderr.
   exact bytes without trimming or case normalization.
 - A union-find graph computes connected components and their minimum-byte ID,
   including aliases that never occur in event/click logs.
-- Events are hash-partitioned by full event ID, deduplicated to the smallest
-  ingest timestamp, and only then validated. Exact key comparisons resolve hash
-  collisions. Invalid earliest copies cannot be rescued by later copies.
+- Each event is parsed once, including precomputed business validity. Every
+  structurally valid candidate remains in global event-ID deduplication; only
+  after selecting the smallest ingest timestamp is validity applied. Exact key
+  comparisons resolve collisions. Invalid earliest copies cannot be rescued.
+- SSE2 accelerates strictly validated common CSV and timestamp shapes, with
+  exact scalar fallback for long rows and arbitrary identifiers. Calendar caches
+  contain computed dates, not assumptions about a dataset's window.
 - Event IDs of at most 16 bytes are stored inline in raw descriptors; longer
   IDs retain exact full-byte comparison. This avoids random source-file paging
   during duplicate checks without using hashes as identity proofs.
 - Unlinked person names are interned in sharded, address-stable storage. Linked
   names refer to the much smaller links files. Event CSV mappings can then be
   released after validation instead of remaining live throughout sorting.
+- Canonical persons have internal integer IDs, with exact original names retained
+  for output. Flat identity slots compare complete short keys inline and use full
+  equality for longer strings. Event records are 24 bytes and clicks 32 bytes.
 - Surviving events and clicks are partitioned by canonical person and sorted.
   A scan constructs sessions and user-day purchase-category revenue totals.
 - Last-click attribution merges ordered sessions and clicks, resolving timestamp
@@ -49,8 +57,9 @@ locations use the standard environment variables. Diagnostics go to stderr.
   by day without constructing a session-by-click join.
 - Identical click duplicates are handled idempotently by both last-click choice
   and interval union; a separate full click-ID hash table is unnecessary.
-- Native memory is released before PyArrow starts. Column buffers are mapped
-  into Arrow arrays and written as Parquet with DATE columns and true nulls.
+- Independent Parquet files are written in parallel, using bounded 262144-row
+  groups, DATE columns and true nulls. ByteArray views refer to live source
+  strings without constructing an intermediate copy of every output string.
 
 ## Validation
 
@@ -78,7 +87,29 @@ python tests/adversarial.py --output /path/to/generated-cases --cases 120
 integer logical types. `tests/oracle.py` also checks key uniqueness. The oracle
 uses independent datetime/DSU/session logic and a deliberately naive click scan.
 
-The final v4 container was validated on 2026-11-21:
+### Current v7 validation and performance limits
+
+The current native runtime passes all 36 official fixtures, 62 additional
+manual/oracle boundary cases, 240 adversarial cases, five independent generated
+100K-event seeds, and the public 1M official answer. Its full 20M and 60M outputs
+match the previously verified v4 outputs exactly. At 60M this covers 6,643,504
+user rows and 28,014 campaign rows; the v4 result was independently verified as
+described below. See [`validation/optimization-v7/summary.json`](validation/optimization-v7/summary.json).
+
+Fixed-CPU native-volume 20M samples were 8.832 and 4.675 seconds for v7, versus
+8.672 and 7.260 seconds for interleaved v4 controls. The large variation prevents
+claiming a stable speedup from the best sample. A local Windows-bind 60M run
+finished correctly in 100.197 seconds, slower than the historical v4 repeats;
+it recorded 25,338 major page faults in the shared 6 GiB environment. These are
+local measurements, not official scores or guarantees about 24 GiB execution.
+
+The previously submitted v4 commit `11c8679` received an official practice score
+of 5.90 seconds (receipt BB-888F13C7). v7's official evaluation is pending at the
+time this source checkpoint is recorded. No final 60M competition result exists.
+
+### Historical v4 evidence
+
+The v4 container was validated on 2026-11-21:
 
 - All **36 official fixtures** and the public seed-1 **1M-event/250K-click answer**
   match exactly, including schemas, nulls and both complete output tables.
@@ -132,8 +163,8 @@ approximately 7.6 GiB Linux VM while below its own 6 GiB limit; v3 timed out
 during deduplication. The inline-ID and interning changes allowed v4 to finish.
 The competition's 24 GiB environment has not been tested locally. The full-scale
 independent comparison covers the specified local seed; it is not an official
-60M answer or proof for every possible input. Hidden-data correctness, official
-runtime and leaderboard placement remain unverified.
+60M answer or proof for every possible input. The official v4 practice result is
+recorded above; the final hidden evaluation remains pending.
 
 ## Provenance and licensing
 

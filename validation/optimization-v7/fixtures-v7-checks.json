@@ -1,0 +1,979 @@
+{
+  "passed": 36,
+  "total": 36,
+  "seconds": 5.383019716999115,
+  "cases": [
+    {
+      "case": "A1",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A10",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 3,
+          "expected_rows": 3,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "events": 3,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 3,
+          "expected_rows": 3,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "revenue_cents": 0,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A11",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 1000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 3,
+          "expected_rows": 3,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 1000,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A12",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 4,
+          "expected_rows": 4,
+          "match": true,
+          "actual_totals": {
+            "sessions": 4,
+            "events": 4,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 6,
+          "expected_rows": 6,
+          "match": true,
+          "actual_totals": {
+            "sessions": 4,
+            "revenue_cents": 0,
+            "assisted_sessions": 6
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A2",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A3",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A4",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A5",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A6",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A7",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A8",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 1000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 1000,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "A9",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 3,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E1",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E10",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E11",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E12",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E13",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 0,
+          "expected_rows": 0,
+          "match": true,
+          "actual_totals": {
+            "sessions": 0,
+            "events": 0,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 0,
+          "expected_rows": 0,
+          "match": true,
+          "actual_totals": {
+            "sessions": 0,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E14",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "events": 4,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E15",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E16",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 4,
+            "events": 10,
+            "revenue_cents": 700
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 4,
+            "revenue_cents": 700,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E17",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E18",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 250
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 250,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E19",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 3,
+          "expected_rows": 3,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "events": 6,
+            "revenue_cents": 700
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3,
+            "revenue_cents": 700,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E2",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 2,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E20",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 3,
+            "revenue_cents": 500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 500,
+            "assisted_sessions": 1
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E3",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 2,
+            "revenue_cents": 1000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 1000,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E4",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E5",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 0,
+          "expected_rows": 0,
+          "match": true,
+          "actual_totals": {
+            "sessions": 0,
+            "events": 0,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 0,
+          "expected_rows": 0,
+          "match": true,
+          "actual_totals": {
+            "sessions": 0,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E6",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E7",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E8",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 2,
+            "revenue_cents": 1000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 1000,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "E9",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 2,
+            "revenue_cents": 3500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 3500,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "L1",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 4,
+            "revenue_cents": 800
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 800,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "L2",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "events": 3,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 2,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "L3",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 5,
+          "expected_rows": 5,
+          "match": true,
+          "actual_totals": {
+            "sessions": 5,
+            "events": 6,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 5,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "L4",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 1,
+          "expected_rows": 1,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "events": 1,
+            "revenue_cents": 0
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 2,
+          "expected_rows": 2,
+          "match": true,
+          "actual_totals": {
+            "sessions": 1,
+            "revenue_cents": 0,
+            "assisted_sessions": 2
+          }
+        }
+      },
+      "passed": true
+    }
+  ]
+}

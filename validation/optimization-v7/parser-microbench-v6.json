@@ -1,0 +1,114 @@
+{
+  "recorded_utc": "2026-11-21T11:25:08.648275+00:00",
+  "status": "PRODUCTION_HEADER_EQUIVALENCE_PASS",
+  "scope": "Bounded parser microbenchmark; not a solver end-to-end time or official score",
+  "selected": "SSE2 CSV for 4+ fields and 16..256 bytes; exact scalar fallbacks; eight-digit number batches; strict ISO validation with calendar cache",
+  "environment": {
+    "image": "rust:1.94-bookworm",
+    "cpus": 1,
+    "memory": "1g",
+    "network": "none",
+    "workspace_mount": "read-only",
+    "shared_vm": true
+  },
+  "benchmark": {
+    "compiler_flags": "-std=c++20 -O3 -DNDEBUG -Wall -Wextra -Werror -pthread -DCHECK_PRODUCTION_PARSE",
+    "rounds": 5,
+    "order": "alternates baseline/candidate by round",
+    "statistic": "separate medians",
+    "calls_per_variant_per_round_per_case": 1000000,
+    "real_csv_sample": "first 20000 event records across sorted CSV files in data/practice-20m, skipping headers",
+    "disk_io_timed": false,
+    "measurements": [
+      {
+        "case": "csv_2_random",
+        "baseline_ns": 32.6332,
+        "candidate_ns": 34.0754,
+        "speedup": 0.957676
+      },
+      {
+        "case": "csv_4_random",
+        "baseline_ns": 56.564,
+        "candidate_ns": 51.4182,
+        "speedup": 1.10008
+      },
+      {
+        "case": "csv_7_random",
+        "baseline_ns": 121.137,
+        "candidate_ns": 101.103,
+        "speedup": 1.19815
+      },
+      {
+        "case": "csv_7_real_20k_sample",
+        "baseline_ns": 82.5822,
+        "candidate_ns": 56.9576,
+        "speedup": 1.44989
+      },
+      {
+        "case": "csv_plus_2timestamps_real",
+        "baseline_ns": 132.757,
+        "candidate_ns": 82.5398,
+        "speedup": 1.60839
+      },
+      {
+        "case": "timestamp_F1_common",
+        "baseline_ns": 19.337,
+        "candidate_ns": 11.7294,
+        "speedup": 1.64859
+      },
+      {
+        "case": "timestamp_F2_common",
+        "baseline_ns": 22.8572,
+        "candidate_ns": 19.8656,
+        "speedup": 1.15059
+      },
+      {
+        "case": "timestamp_numeric13",
+        "baseline_ns": 19.4879,
+        "candidate_ns": 12.0701,
+        "speedup": 1.61457
+      },
+      {
+        "case": "timestamp_varied_calendar",
+        "baseline_ns": 25.1885,
+        "candidate_ns": 30.3652,
+        "speedup": 0.829519
+      }
+    ],
+    "checksum": "10895574687489318520"
+  },
+  "correctness": {
+    "compiler_flags": "-std=c++20 -O2 -g -Wall -Wextra -Werror -pthread -DCHECK_PRODUCTION_PARSE -fsanitize=address,undefined -fno-omit-frame-pointer",
+    "exit_code": 0,
+    "stdout": "parser equivalence checks PASS",
+    "random_csv_inputs": 500000,
+    "csv_field_widths": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "random_numeric_inputs": 500000,
+    "random_iso_timestamp_inputs": 500000,
+    "all_four_digit_year_february_28_29_30": 30000,
+    "extra_checks": [
+      "CSV syntax positions over lengths 0..300",
+      "guard-page reads for CSV, integer and ISO timestamps",
+      "each byte 0..255 in each ISO timestamp position",
+      "arbitrary leading zeroes, int64 and uint64 limits",
+      "NUL, high bytes, CR, spaces, quoted empty fields",
+      "four concurrent date caches"
+    ]
+  },
+  "limitations": [
+    "Shared-VM scheduling and code layout introduce noise; two-column CSV uses the old algorithm and measured 0.958x in this run",
+    "Random varied-calendar timestamps measured 0.830x; earlier selected-candidate run measured 0.898x",
+    "Real-sample parsing acceleration does not predict solver or official scoring improvement",
+    "No change to row validity, byte semantics, timestamp formats, or overflow acceptance is intended"
+  ],
+  "source_sha256": {
+    "shopping-sessions-solution/src/parse.hpp": "fa0dab5ee4db5a175343225f453454731bda328b61eb5a944ea58938471cf88b",
+    "shopping-sessions-work/parse-baseline.hpp": "f1c212d16f9a9495a8401a4493cc5de6fef76866056959e20356f76bc2357b7a",
+    "shopping-sessions-work/parse-checks-bench.cpp": "dd2dff57de6c0ab990b5a0a14d394d9567cbc3d97968365b7a85174be9325759"
+  }
+}

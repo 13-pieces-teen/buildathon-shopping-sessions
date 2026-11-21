@@ -1,0 +1,6487 @@
+{
+  "passed": 240,
+  "total": 240,
+  "seconds": 100.86228624599971,
+  "cases": [
+    {
+      "case": "case-0000",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 40,
+            "revenue_cents": 5505
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 5505,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0000-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 40,
+            "revenue_cents": 5505
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 5505,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0001",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 41,
+            "revenue_cents": 20005002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20005002,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0001-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 41,
+            "revenue_cents": 20005002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20005002,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0002",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 37,
+            "revenue_cents": 10006501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10006501,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0002-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 37,
+            "revenue_cents": 10006501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10006501,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0003",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 37,
+            "revenue_cents": 30005501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005501,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0003-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 37,
+            "revenue_cents": 30005501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005501,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0004",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 42,
+            "revenue_cents": 60004254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 60004254,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0004-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 42,
+            "revenue_cents": 60004254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 60004254,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0005",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 35,
+            "revenue_cents": 10004504
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 10004504,
+            "assisted_sessions": 59
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0005-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 35,
+            "revenue_cents": 10004504
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 10004504,
+            "assisted_sessions": 59
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0006",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 46,
+            "revenue_cents": 40004004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 40004004,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0006-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 46,
+            "revenue_cents": 40004004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 40004004,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0007",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 34,
+            "revenue_cents": 20004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20004253,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0007-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 34,
+            "revenue_cents": 20004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20004253,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0008",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 45,
+            "revenue_cents": 20004255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 20004255,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0008-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 45,
+            "revenue_cents": 20004255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 20004255,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0009",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 32,
+            "revenue_cents": 10004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 10004002,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0009-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 32,
+            "revenue_cents": 10004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 10004002,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0010",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 40,
+            "revenue_cents": 20005502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20005502,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0010-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 40,
+            "revenue_cents": 20005502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20005502,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0011",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 10004753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 14,
+          "expected_rows": 14,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 10004753,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0011-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 10004753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 14,
+          "expected_rows": 14,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 10004753,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0012",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 31,
+            "revenue_cents": 50004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 50004253,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0012-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 31,
+            "revenue_cents": 50004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 50004253,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0013",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 34,
+            "revenue_cents": 40006252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 40006252,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0013-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 34,
+            "revenue_cents": 40006252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 40006252,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0014",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 50003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50003752,
+            "assisted_sessions": 33
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0014-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 50003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50003752,
+            "assisted_sessions": 33
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0015",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 41,
+            "revenue_cents": 10005252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 10005252,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0015-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 41,
+            "revenue_cents": 10005252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 10005252,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0016",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 32,
+            "revenue_cents": 30003251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30003251,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0016-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 32,
+            "revenue_cents": 30003251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30003251,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0017",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 30004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 30004251,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0017-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 30004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 30004251,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0018",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 40,
+            "revenue_cents": 60005754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 60005754,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0018-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 40,
+            "revenue_cents": 60005754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 60005754,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0019",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 39,
+            "revenue_cents": 10004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10004751,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0019-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 39,
+            "revenue_cents": 10004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10004751,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0020",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 40,
+            "revenue_cents": 20004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 20004003,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0020-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 40,
+            "revenue_cents": 20004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 20004003,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0021",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 38,
+            "revenue_cents": 10004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004503,
+            "assisted_sessions": 57
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0021-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 38,
+            "revenue_cents": 10004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004503,
+            "assisted_sessions": 57
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0022",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 35,
+            "revenue_cents": 20004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 20004001,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0022-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 35,
+            "revenue_cents": 20004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 20004001,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0023",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 43,
+            "revenue_cents": 60004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 60004003,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0023-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 43,
+            "revenue_cents": 60004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 60004003,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0024",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 40004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 40004751,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0024-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 40004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 40004751,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0025",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 46,
+            "revenue_cents": 50004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 50004754,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0025-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 46,
+            "revenue_cents": 50004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 50004754,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0026",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 36,
+            "revenue_cents": 50006750
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50006750,
+            "assisted_sessions": 35
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0026-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 36,
+            "revenue_cents": 50006750
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50006750,
+            "assisted_sessions": 35
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0027",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 39,
+            "revenue_cents": 20004255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20004255,
+            "assisted_sessions": 32
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0027-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 39,
+            "revenue_cents": 20004255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20004255,
+            "assisted_sessions": 32
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0028",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 35,
+            "revenue_cents": 40003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 40003752,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0028-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 35,
+            "revenue_cents": 40003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 40003752,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0029",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 40,
+            "revenue_cents": 10003754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 10003754,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0029-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 40,
+            "revenue_cents": 10003754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 10003754,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0030",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 42,
+            "revenue_cents": 30005251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30005251,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0030-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 42,
+            "revenue_cents": 30005251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30005251,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0031",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 32,
+            "revenue_cents": 20003501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 20003501,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0031-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 32,
+            "revenue_cents": 20003501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 20003501,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0032",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "events": 27,
+            "revenue_cents": 4500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "revenue_cents": 4500,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0032-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "events": 27,
+            "revenue_cents": 4500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "revenue_cents": 4500,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0033",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 43,
+            "revenue_cents": 30005752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0033-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 43,
+            "revenue_cents": 30005752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0034",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 40,
+            "revenue_cents": 30005257
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 30005257,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0034-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 40,
+            "revenue_cents": 30005257
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 30005257,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0035",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 37,
+            "revenue_cents": 60004755
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 60004755,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0035-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 37,
+            "revenue_cents": 60004755
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 60004755,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0036",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "events": 32,
+            "revenue_cents": 10003753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "revenue_cents": 10003753,
+            "assisted_sessions": 34
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0036-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "events": 32,
+            "revenue_cents": 10003753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "revenue_cents": 10003753,
+            "assisted_sessions": 34
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0037",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 29,
+            "revenue_cents": 10004501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 10004501,
+            "assisted_sessions": 35
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0037-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 29,
+            "revenue_cents": 10004501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 10004501,
+            "assisted_sessions": 35
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0038",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 36,
+            "revenue_cents": 4753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 4753,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0038-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 36,
+            "revenue_cents": 4753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 4753,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0039",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 42,
+            "revenue_cents": 40004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 40004754,
+            "assisted_sessions": 49
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0039-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 42,
+            "revenue_cents": 40004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 40004754,
+            "assisted_sessions": 49
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0040",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 30005503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 30005503,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0040-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 30005503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 30005503,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0041",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 36,
+            "revenue_cents": 20004005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 20004005,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0041-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 36,
+            "revenue_cents": 20004005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 20004005,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0042",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 36,
+            "revenue_cents": 50003500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 50003500,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0042-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 36,
+            "revenue_cents": 50003500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 50003500,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0043",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 31,
+            "revenue_cents": 40003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 40003253,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0043-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 31,
+            "revenue_cents": 40003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 40003253,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0044",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 50004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50004002,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0044-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 50004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 50004002,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0045",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 30,
+            "revenue_cents": 10003751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 10003751,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0045-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 30,
+            "revenue_cents": 10003751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 10003751,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0046",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 41,
+            "revenue_cents": 30004500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30004500,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0046-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 41,
+            "revenue_cents": 30004500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30004500,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0047",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 44,
+            "revenue_cents": 30005006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 30005006,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0047-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 44,
+            "revenue_cents": 30005006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 30005006,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0048",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 38,
+            "revenue_cents": 40004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 40004003,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0048-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 38,
+            "revenue_cents": 40004003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 40004003,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0049",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 34,
+            "revenue_cents": 10004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004253,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0049-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 34,
+            "revenue_cents": 10004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004253,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0050",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 35,
+            "revenue_cents": 40004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 40004754,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0050-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 35,
+            "revenue_cents": 40004754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 40004754,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0051",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 30,
+            "revenue_cents": 20004501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 20004501,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0051-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 30,
+            "revenue_cents": 20004501
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 20004501,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0052",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 35,
+            "revenue_cents": 50004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 50004001,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0052-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 35,
+            "revenue_cents": 50004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 50004001,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0053",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 36,
+            "revenue_cents": 20004500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004500,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0053-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 36,
+            "revenue_cents": 20004500
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004500,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0054",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 34,
+            "revenue_cents": 30004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 30004251,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0054-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 34,
+            "revenue_cents": 30004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 30004251,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0055",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 30004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30004253,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0055-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 30004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30004253,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0056",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 10006503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10006503,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0056-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 35,
+            "revenue_cents": 10006503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10006503,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0057",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 38,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 58
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0057-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 38,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 58
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0058",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 36,
+            "revenue_cents": 10005752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 10005752,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0058-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 36,
+            "revenue_cents": 10005752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 10005752,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0059",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 41,
+            "revenue_cents": 30003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 30003253,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0059-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 41,
+            "revenue_cents": 30003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 30003253,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0060",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 39,
+            "revenue_cents": 60004753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 60004753,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0060-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 39,
+            "revenue_cents": 60004753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 60004753,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0061",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 60005005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 60005005,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0061-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 60005005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 60005005,
+            "assisted_sessions": 56
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0062",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 34,
+            "revenue_cents": 5002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 5002,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0062-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 34,
+            "revenue_cents": 5002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 5002,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0063",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 41,
+            "revenue_cents": 20004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 20004002,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0063-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 41,
+            "revenue_cents": 20004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 20004002,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0064",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 33,
+            "revenue_cents": 20004502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004502,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0064-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 33,
+            "revenue_cents": 20004502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004502,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0065",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 42,
+            "revenue_cents": 20005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 20005253,
+            "assisted_sessions": 57
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0065-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 42,
+            "revenue_cents": 20005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 20005253,
+            "assisted_sessions": 57
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0066",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 31,
+            "revenue_cents": 40004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 40004503,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0066-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 31,
+            "revenue_cents": 40004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 40004503,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0067",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 32,
+            "revenue_cents": 20002751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20002751,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0067-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 32,
+            "revenue_cents": 20002751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20002751,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0068",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 30003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003752,
+            "assisted_sessions": 37
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0068-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 30003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003752,
+            "assisted_sessions": 37
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0069",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 20002753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20002753,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0069-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 20002753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20002753,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0070",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 41,
+            "revenue_cents": 20003255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20003255,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0070-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 41,
+            "revenue_cents": 20003255
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20003255,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0071",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 30004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30004503,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0071-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 39,
+            "revenue_cents": 30004503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30004503,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0072",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 37,
+            "revenue_cents": 30003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0072-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 37,
+            "revenue_cents": 30003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0073",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 35,
+            "revenue_cents": 50003505
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 50003505,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0073-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 35,
+            "revenue_cents": 50003505
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 50003505,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0074",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 41,
+            "revenue_cents": 20004006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20004006,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0074-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 41,
+            "revenue_cents": 20004006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20004006,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0075",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 42,
+            "revenue_cents": 30005754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005754,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0075-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 42,
+            "revenue_cents": 30005754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30005754,
+            "assisted_sessions": 52
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0076",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 39,
+            "revenue_cents": 20004252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004252,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0076-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 39,
+            "revenue_cents": 20004252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20004252,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0077",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 30003754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30003754,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0077-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 30003754
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30003754,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0078",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 41,
+            "revenue_cents": 30004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30004751,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0078-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 41,
+            "revenue_cents": 30004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30004751,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0079",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 31,
+          "expected_rows": 31,
+          "match": true,
+          "actual_totals": {
+            "sessions": 37,
+            "events": 46,
+            "revenue_cents": 60006252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 37,
+            "revenue_cents": 60006252,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0079-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 31,
+          "expected_rows": 31,
+          "match": true,
+          "actual_totals": {
+            "sessions": 37,
+            "events": 46,
+            "revenue_cents": 60006252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 37,
+            "revenue_cents": 60006252,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0080",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 38,
+            "revenue_cents": 20005002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20005002,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0080-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 38,
+            "revenue_cents": 20005002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 20005002,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0081",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 30,
+            "revenue_cents": 10004000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 10004000,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0081-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 30,
+            "revenue_cents": 10004000
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 10004000,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0082",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 37,
+            "revenue_cents": 20005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20005253,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0082-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 37,
+            "revenue_cents": 20005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20005253,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0083",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 40,
+            "revenue_cents": 50005252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 50005252,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0083-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 40,
+            "revenue_cents": 50005252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 50005252,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0084",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 30,
+            "revenue_cents": 10004502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 10004502,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0084-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "events": 30,
+            "revenue_cents": 10004502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 21,
+            "revenue_cents": 10004502,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0085",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 36,
+            "revenue_cents": 20004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20004251,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0085-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 36,
+            "revenue_cents": 20004251
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 20004251,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0086",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 10005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 10005253,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0086-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 35,
+            "revenue_cents": 10005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 10005253,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0087",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "events": 32,
+            "revenue_cents": 10003751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "revenue_cents": 10003751,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0087-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "events": 32,
+            "revenue_cents": 10003751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19,
+            "revenue_cents": 10003751,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0088",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30005250
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30005250,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0088-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30005250
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30005250,
+            "assisted_sessions": 42
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0089",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 37,
+            "revenue_cents": 40004752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 40004752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0089-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 37,
+            "revenue_cents": 40004752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 40004752,
+            "assisted_sessions": 53
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0090",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 30004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30004253,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0090-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 34,
+            "revenue_cents": 30004253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 30004253,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0091",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 35,
+            "revenue_cents": 30005250
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30005250,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0091-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 35,
+            "revenue_cents": 30005250
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30005250,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0092",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 40,
+            "revenue_cents": 10004756
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 10004756,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0092-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 40,
+            "revenue_cents": 10004756
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 10004756,
+            "assisted_sessions": 43
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0093",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 36,
+            "revenue_cents": 20003252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 20003252,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0093-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "events": 36,
+            "revenue_cents": 20003252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 23,
+            "revenue_cents": 20003252,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0094",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 42,
+            "revenue_cents": 30004006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 30004006,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0094-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "events": 42,
+            "revenue_cents": 30004006
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 33,
+            "revenue_cents": 30004006,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0095",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 30005502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 30005502,
+            "assisted_sessions": 60
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0095-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 25,
+          "expected_rows": 25,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 41,
+            "revenue_cents": 30005502
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 30005502,
+            "assisted_sessions": 60
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0096",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 31,
+            "revenue_cents": 30004004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 30004004,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0096-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 31,
+            "revenue_cents": 30004004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 30004004,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0097",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 33,
+            "revenue_cents": 50004005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 50004005,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0097-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 33,
+            "revenue_cents": 50004005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 50004005,
+            "assisted_sessions": 41
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0098",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 41,
+            "revenue_cents": 50003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 50003253,
+            "assisted_sessions": 58
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0098-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 41,
+            "revenue_cents": 50003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 16,
+          "expected_rows": 16,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 50003253,
+            "assisted_sessions": 58
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0099",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 40,
+            "revenue_cents": 20003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 20003752,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0099-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 40,
+            "revenue_cents": 20003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 20003752,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0100",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 35,
+            "revenue_cents": 30003004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 14,
+          "expected_rows": 14,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 30003004,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0100-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "events": 35,
+            "revenue_cents": 30003004
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 14,
+          "expected_rows": 14,
+          "match": true,
+          "actual_totals": {
+            "sessions": 22,
+            "revenue_cents": 30003004,
+            "assisted_sessions": 36
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0101",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 38,
+            "revenue_cents": 30003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30003253,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0101-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 38,
+            "revenue_cents": 30003253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30003253,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0102",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 39,
+            "revenue_cents": 20006254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20006254,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0102-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 39,
+            "revenue_cents": 20006254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 20006254,
+            "assisted_sessions": 45
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0103",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 38,
+            "revenue_cents": 40004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 40004751,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0103-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 38,
+            "revenue_cents": 40004751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 18,
+          "expected_rows": 18,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 40004751,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0104",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 41,
+            "revenue_cents": 30005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 30005253,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0104-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 30,
+          "expected_rows": 30,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "events": 41,
+            "revenue_cents": 30005253
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 34,
+            "revenue_cents": 30005253,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0105",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 33,
+            "revenue_cents": 4003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 4003,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0105-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 33,
+            "revenue_cents": 4003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 4003,
+            "assisted_sessions": 48
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0106",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 39,
+            "revenue_cents": 10003254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10003254,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0106-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "events": 39,
+            "revenue_cents": 10003254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 29,
+            "revenue_cents": 10003254,
+            "assisted_sessions": 44
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0107",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 39,
+            "revenue_cents": 30004504
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 30004504,
+            "assisted_sessions": 49
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0107-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 26,
+          "expected_rows": 26,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "events": 39,
+            "revenue_cents": 30004504
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 31,
+            "revenue_cents": 30004504,
+            "assisted_sessions": 49
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0108",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0108-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 55
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0109",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 40,
+            "revenue_cents": 30006003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30006003,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0109-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 27,
+          "expected_rows": 27,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "events": 40,
+            "revenue_cents": 30006003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 30,
+            "revenue_cents": 30006003,
+            "assisted_sessions": 54
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0110",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 38,
+            "revenue_cents": 20004254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20004254,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0110-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 38,
+            "revenue_cents": 20004254
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 20004254,
+            "assisted_sessions": 39
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0111",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 42,
+            "revenue_cents": 10005503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 10005503,
+            "assisted_sessions": 50
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0111-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 23,
+          "expected_rows": 23,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 42,
+            "revenue_cents": 10005503
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 10005503,
+            "assisted_sessions": 50
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0112",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0112-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "events": 34,
+            "revenue_cents": 30004002
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 15,
+          "expected_rows": 15,
+          "match": true,
+          "actual_totals": {
+            "sessions": 24,
+            "revenue_cents": 30004002,
+            "assisted_sessions": 40
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0113",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "events": 31,
+            "revenue_cents": 20004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "revenue_cents": 20004001,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0113-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 17,
+          "expected_rows": 17,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "events": 31,
+            "revenue_cents": 20004001
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20,
+            "revenue_cents": 20004001,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0114",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 32,
+            "revenue_cents": 30003252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003252,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0114-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "events": 32,
+            "revenue_cents": 30003252
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 26,
+            "revenue_cents": 30003252,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0115",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 40,
+            "revenue_cents": 20005751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 20005751,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0115-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 28,
+          "expected_rows": 28,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "events": 40,
+            "revenue_cents": 20005751
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 32,
+            "revenue_cents": 20005751,
+            "assisted_sessions": 51
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0116",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 38,
+            "revenue_cents": 10003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 10003752,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0116-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "events": 38,
+            "revenue_cents": 10003752
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 27,
+            "revenue_cents": 10003752,
+            "assisted_sessions": 46
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0117",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 42,
+            "revenue_cents": 10004506
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004506,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0117-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "events": 42,
+            "revenue_cents": 10004506
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 28,
+            "revenue_cents": 10004506,
+            "assisted_sessions": 47
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0118",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 36,
+            "revenue_cents": 30003753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30003753,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0118-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 22,
+          "expected_rows": 22,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 36,
+            "revenue_cents": 30003753
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 20,
+          "expected_rows": 20,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 30003753,
+            "assisted_sessions": 38
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0119",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 28,
+            "revenue_cents": 10006003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 10006003,
+            "assisted_sessions": 32
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "case-0119-equivalent",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 24,
+          "expected_rows": 24,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "events": 28,
+            "revenue_cents": 10006003
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 21,
+          "expected_rows": 21,
+          "match": true,
+          "actual_totals": {
+            "sessions": 25,
+            "revenue_cents": 10006003,
+            "assisted_sessions": 32
+          }
+        }
+      },
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "version": "v7",
+  "status": "LOCAL_VALIDATION_COMPLETE_OFFICIAL_PENDING",
+  "rules": "shopping-sessions-4",
+  "runtime": {
+    "status": "RUNTIME_BYTE_IDENTICAL",
+    "tested_image": "sha256:1f58e865af6c599dbd0e32bbbb5316f0541aa883142bf9317380ff84489d2fa2",
+    "root_image": "sha256:76d504cbac71c49c6deb1d8828ce4a7fc83daf48d4efb9cc35c3f684433f624d",
+    "runtime_sha256_lines": [
+      "d78ab9af0dd2a00df2e11efbeafe370f27ca9f60558175073c2d2a59aa216ffd  /app/shopping-sessions",
+      "7d0c3389026dc4bc013954583bb9ca3e16e910958308bc1ba0ab775888776576  /app/run.sh"
+    ],
+    "user": "1000:1000",
+    "cmd": [
+      "/app/run.sh"
+    ],
+    "size": 410073588,
+    "os": "linux",
+    "architecture": "amd64"
+  },
+  "checks": {
+    "official_fixtures": 36,
+    "targeted_manual_oracle": 62,
+    "adversarial": 240,
+    "generated_100k_seeds": 5,
+    "public_1m_official_answer": "MATCH",
+    "full_20m_vs_v4": "MATCH",
+    "full_60m_vs_independently_verified_v4": "MATCH",
+    "full_60m_user_rows": 6643504,
+    "full_60m_campaign_rows": 28014
+  },
+  "limitations": [
+    "Local shared Docker Desktop VM, 8 CPU quota and 6 GiB limit; not the official environment.",
+    "Timing outliers and the slower full60M run are retained.",
+    "No final competition 60M result has been observed.",
+    "Default ASan intermittently failed before main even for empty-main control; final identity/ingest checks passed with no-pie ASan/UBSan."
+  ],
+  "runtime_sources": [
+    {
+      "path": "Dockerfile",
+      "bytes": 953,
+      "sha256": "c06c3e40aa0c501e35d90ab0dcb65a58de2437209cdbe1392205243bb6cf5a9a"
+    },
+    {
+      "path": "run.sh",
+      "bytes": 92,
+      "sha256": "7d0c3389026dc4bc013954583bb9ca3e16e910958308bc1ba0ab775888776576"
+    },
+    {
+      "path": "src/main.cpp",
+      "bytes": 1618,
+      "sha256": "acf672b2e6f108ad3466eacf236a7a8f772beafded51003bd7e7a3b6dfd19799"
+    },
+    {
+      "path": "src/ingest.cpp",
+      "bytes": 14624,
+      "sha256": "9fe5a4429e5b6a34493fc6c7188f3dde1dce04319af1a18cbcb60363a087f1b5"
+    },
+    {
+      "path": "src/identity.hpp",
+      "bytes": 9225,
+      "sha256": "d0efb59390faefeb57e98e492bb777a8503dfba8837fcacb2ee5605ccb81a401"
+    },
+    {
+      "path": "src/parse.hpp",
+      "bytes": 8258,
+      "sha256": "fa0dab5ee4db5a175343225f453454731bda328b61eb5a944ea58938471cf88b"
+    },
+    {
+      "path": "src/types.hpp",
+      "bytes": 3797,
+      "sha256": "2d400ba101e3642f4d145d3ee916476c8ad0fc75e9195fefabd5d46c0e55880e"
+    },
+    {
+      "path": "src/aggregate.cpp",
+      "bytes": 13538,
+      "sha256": "feabdb5045b8340ac97214b237fba21cbd89916785444dfe5caafe9c7e20372a"
+    },
+    {
+      "path": "src/output_arrow.cpp",
+      "bytes": 9970,
+      "sha256": "925ae4e4b8c6c17e30b699f55b725d5e5ee620571a1591d5665218c8f0372f13"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "fixtures-v7-checks.json",
+      "bytes": 21747,
+      "sha256": "08a03ec58da98d1281df385e579fa39aef2ec7e56a9cd7858047b6343835ff79"
+    },
+    {
+      "path": "adversarial-v7-checks.json",
+      "bytes": 152285,
+      "sha256": "34aaa68e83ce40ba050376cfe7929a900e2abdb1bd51f75a41a947ef1f7cf62b"
+    },
+    {
+      "path": "multiseed-v7-checks.json",
+      "bytes": 3341,
+      "sha256": "4a967f932116bbf52807bb0142260cc14634caf7b264ece1c2f819db3db19ee4"
+    },
+    {
+      "path": "ingest-optimization-v7.log",
+      "bytes": 141,
+      "sha256": "5b44285ec6e4289d2249f97a3d35f2f78c62e411546e2b5a90ccbb1809e0a6da"
+    },
+    {
+      "path": "dev-v7-comparison.json",
+      "bytes": 459,
+      "sha256": "07fcaceadd92271e19e829b0b27196321d9e054088088205cd064f0fbfa99cbb"
+    },
+    {
+      "path": "dev-v7-run.json",
+      "bytes": 524,
+      "sha256": "18bded861038db022f42a87cba6f9d3cb96a9c38d98da3b83aa411250f9e5b58"
+    },
+    {
+      "path": "native20m-v7-pinned-r1-comparison.json",
+      "bytes": 468,
+      "sha256": "93981e81c54583922d11f59f215134c98d84ccc48f01977f2bc873566a372bee"
+    },
+    {
+      "path": "final60m-v7-comparison.json",
+      "bytes": 473,
+      "sha256": "8d61a89cbeb6bc7855d9e94bc2e85e1d94c739f60dd6d12b85ba7c195c33155b"
+    },
+    {
+      "path": "final60m-v7-run.json",
+      "bytes": 546,
+      "sha256": "67de9e0e4cbb25b5037ce4207bd6d4014da06e0bc0b8a55f916a8c109ba9acc5"
+    },
+    {
+      "path": "final60m-v7.log",
+      "bytes": 945,
+      "sha256": "3ad718a0a1b01119dbe685dfc9974a1ef892f723dac18ea16ddd264dd7eaf32e"
+    },
+    {
+      "path": "v7-root-runtime-equivalence.json",
+      "bytes": 576,
+      "sha256": "53c9de713525bd6f90d549c059bfe5526b7a4c2a4780074f7f84e7f0fa400af9"
+    },
+    {
+      "path": "parser-microbench-v6.json",
+      "bytes": 4130,
+      "sha256": "6472ecef9722b75eaf29920757e1ff187fe6ed648eb0a86ac3fd70424f41a437"
+    },
+    {
+      "path": "identity-v6-sanitizer-no-pie.log",
+      "bytes": 1221,
+      "sha256": "ad0a013df5309d93af78ec0f6d55e09799772e41b2f1a34cb88687930eca1d77"
+    },
+    {
+      "path": "native20m-v7-pinned-r1-run.json",
+      "bytes": 565,
+      "sha256": "50b34429091afe52eae31105043b516dfc8c28639c27caf2bbd8e5666ad7b3f7"
+    },
+    {
+      "path": "native20m-v7-pinned-r1.log",
+      "bytes": 931,
+      "sha256": "2d31843441faa248f345d6a99edc1fd7f9980ac378363ea646a2b9a546f9941e"
+    },
+    {
+      "path": "native20m-v7-pinned-r2-run.json",
+      "bytes": 564,
+      "sha256": "aa179596537437de421895ad574e8fc6a67a2c4a05442fe4926e83d0d3cb580d"
+    },
+    {
+      "path": "native20m-v7-pinned-r2.log",
+      "bytes": 928,
+      "sha256": "cf5577974965f34436d3b376f20dd4d3aff8da9231d8a52e4c24ddeee33df42f"
+    },
+    {
+      "path": "native20m-v4-pinned-r1-run.json",
+      "bytes": 564,
+      "sha256": "24538fcd8889d1e9d8ce5a810d99313ce3e3a1a56d872708aa7a127eda921b4a"
+    },
+    {
+      "path": "native20m-v4-pinned-r1.log",
+      "bytes": 974,
+      "sha256": "b55748a8fbb50f147c32435fafbf527aac7ca2ffa67e7c391dbd7f52ad6c61fb"
+    },
+    {
+      "path": "native20m-v4-pinned-r2-run.json",
+      "bytes": 565,
+      "sha256": "fcc2210172bc224e1c878c6691f3c9cd7f3667102c3a7574e39bc621f88cf174"
+    },
+    {
+      "path": "native20m-v4-pinned-r2.log",
+      "bytes": 975,
+      "sha256": "a6f16e0bbd5412e3bd73130e23e692a97eefc8c9c7a6cee4fa125ecb45738508"
+    }
+  ]
+}

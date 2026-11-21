@@ -1,0 +1,142 @@
+{
+  "passed": 5,
+  "total": 5,
+  "seconds": 9.387999003000004,
+  "cases": [
+    {
+      "case": "seed-2",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 12992,
+          "expected_rows": 12992,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20325,
+            "events": 97777,
+            "revenue_cents": 24703029
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 13728,
+          "expected_rows": 13728,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20325,
+            "revenue_cents": 24703029,
+            "assisted_sessions": 204243
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "seed-2028",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 12996,
+          "expected_rows": 12996,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19841,
+            "events": 97923,
+            "revenue_cents": 29669651
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 13554,
+          "expected_rows": 13554,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19841,
+            "revenue_cents": 29669651,
+            "assisted_sessions": 191818
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "seed-29",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 12986,
+          "expected_rows": 12986,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20259,
+            "events": 98182,
+            "revenue_cents": 38652560
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 13895,
+          "expected_rows": 13895,
+          "match": true,
+          "actual_totals": {
+            "sessions": 20259,
+            "revenue_cents": 38652560,
+            "assisted_sessions": 199050
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "seed-7",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 13021,
+          "expected_rows": 13021,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19939,
+            "events": 97767,
+            "revenue_cents": 63630203
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 13612,
+          "expected_rows": 13612,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19939,
+            "revenue_cents": 63630203,
+            "assisted_sessions": 202669
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "seed-999",
+      "exit": 0,
+      "comparison": {
+        "user_daily": {
+          "actual_rows": 12818,
+          "expected_rows": 12818,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19757,
+            "events": 98213,
+            "revenue_cents": 20029005
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 13237,
+          "expected_rows": 13237,
+          "match": true,
+          "actual_totals": {
+            "sessions": 19757,
+            "revenue_cents": 20029005,
+            "assisted_sessions": 177415
+          }
+        }
+      },
+      "passed": true
+    }
+  ]
+}

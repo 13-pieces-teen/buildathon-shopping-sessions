@@ -1,0 +1,16 @@
+{
+  "status": "RUNTIME_BYTE_IDENTICAL",
+  "tested_image": "sha256:1f58e865af6c599dbd0e32bbbb5316f0541aa883142bf9317380ff84489d2fa2",
+  "root_image": "sha256:76d504cbac71c49c6deb1d8828ce4a7fc83daf48d4efb9cc35c3f684433f624d",
+  "runtime_sha256_lines": [
+    "d78ab9af0dd2a00df2e11efbeafe370f27ca9f60558175073c2d2a59aa216ffd  /app/shopping-sessions",
+    "7d0c3389026dc4bc013954583bb9ca3e16e910958308bc1ba0ab775888776576  /app/run.sh"
+  ],
+  "user": "1000:1000",
+  "cmd": [
+    "/app/run.sh"
+  ],
+  "size": 410073588,
+  "os": "linux",
+  "architecture": "amd64"
+}

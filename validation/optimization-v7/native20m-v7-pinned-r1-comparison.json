@@ -1,0 +1,22 @@
+{
+  "user_daily": {
+    "actual_rows": 2246306,
+    "expected_rows": 2246306,
+    "match": true,
+    "actual_totals": {
+      "sessions": 3407788,
+      "events": 19564682,
+      "revenue_cents": 6680740085
+    }
+  },
+  "campaign_daily": {
+    "actual_rows": 28014,
+    "expected_rows": 28014,
+    "match": true,
+    "actual_totals": {
+      "sessions": 3407788,
+      "revenue_cents": 6680740085,
+      "assisted_sessions": 36030031
+    }
+  }
+}

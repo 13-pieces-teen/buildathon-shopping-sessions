@@ -1,0 +1,16 @@
+{
+  "name": "native20m-v7-pinned-r1",
+  "image": "sha256:1f58e865af6c599dbd0e32bbbb5316f0541aa883142bf9317380ff84489d2fa2",
+  "exit_code": 0,
+  "oom_killed": false,
+  "container_seconds": 8.8317268,
+  "client_monotonic_seconds": 9.0922299,
+  "memory": "6g",
+  "n_cpu": 8,
+  "cpu_set": "0-7",
+  "input_volume": "shopping-opt20m-input-20261121",
+  "work_volume": "shopping-opt20m-work-20261121",
+  "output": "/work/native20m-v7-pinned-r1/output",
+  "started_utc": "2026-11-21T11:28:31.845408595Z",
+  "finished_utc": "2026-11-21T11:28:40.677135425Z"
+}

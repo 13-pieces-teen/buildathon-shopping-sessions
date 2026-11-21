@@ -1,0 +1,36 @@
+empty-main sanitizer attempt 4 failed 137
+bash: line 1:    23 Killed                  timeout -s KILL 2 /tmp/empty > /tmp/empty.log 2>&1
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer:DEADLYSIGNAL
+hash checks
+packed flat-index checks
+identity/arena checks
+threaded identity checks
+Dataset snapshot checks
+identity epoch checks
+identity/hash/packed-key/snapshot checks PASS
+hash checks
+packed flat-index checks
+identity/arena checks
+threaded identity checks
+Dataset snapshot checks
+identity epoch checks
+identity/hash/packed-key/snapshot checks PASS
+hash checks
+packed flat-index checks
+identity/arena checks
+threaded identity checks
+Dataset snapshot checks
+identity epoch checks
+identity/hash/packed-key/snapshot checks PASS
+links elapsed=0.000566091s
+events parsed elapsed=0.00475395s
+events globally deduped elapsed=0.00479189s
+events validated elapsed=0.0048326s
+event partitions compacted elapsed=0.00493861s
+event partitions compacted elapsed=0.0264528s
+clicks parsed elapsed=0.036127s
+click partitions compacted elapsed=0.0367451s
+events parsed=1 surviving=1 linked_ids=2
+parser boundaries, short/long/quoted IDs and 36 fixture ingest totals passed
