@@ -1,4 +1,6 @@
-FROM rust:1.94-bookworm AS build
+FROM debian:bookworm-slim AS build
+RUN apt-get update && apt-get install -y --no-install-recommends g++ \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /build
 COPY src/ ./src/
 RUN g++ -std=c++20 -O3 -DNDEBUG -pthread -Wall -Wextra src/main.cpp src/ingest.cpp src/aggregate.cpp src/output.cpp -o /build/shopping-sessions

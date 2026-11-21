@@ -1,0 +1,570 @@
+{
+  "date": "2026-11-21",
+  "scope": "Local validation evidence, not official scores. No public repository or competition submission has been made.",
+  "environment": {
+    "platform": "linux/amd64 on Docker Desktop with Windows bind mounts",
+    "cpu_quota": 8,
+    "container_memory_gib": 6,
+    "shared_vm_memory_gib_approx": 7.6,
+    "runtime_method": "Docker State.StartedAt to FinishedAt. Final r2/r3 and 20M v4 use raw UTC strings and an independent client monotonic timer.",
+    "limitations": "Other workloads and file caching were not controlled; competition 24 GiB environment not measured."
+  },
+  "final_image": {
+    "id": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+    "size_bytes": 410005173,
+    "platform": "linux/amd64",
+    "user": "1000:1000"
+  },
+  "source_sha256": {
+    "Dockerfile": "161396e342461adf76a18a5d45e7d8922cb0a757b9ff5f586e098556a32b5000",
+    "run.sh": "5e022ceb195b06e5ca818b758925229999796eb7df5cec2da785cc8057a1cfef",
+    "write_parquet.py": "2c7390b251e37debd753636a812933239875770c7aad0ad1defdaa95aa170a04",
+    "src/aggregate.cpp": "414f67751e9d6f878ca370e06d504c53368681a33d1de7bb11445e1811780547",
+    "src/ingest.cpp": "e8344c7d55cbcb77860db54ee10521e26939436aec25f7b09a64994efb3ddb17",
+    "src/main.cpp": "acf672b2e6f108ad3466eacf236a7a8f772beafded51003bd7e7a3b6dfd19799",
+    "src/output.cpp": "750bb96aa32d0a99e459a9238c8d744010cc9f4078a33733dbfcfd1523870e86",
+    "src/parse.hpp": "f255dba20340ce0008d06703e655032543b27570723de1be0a2cc78ee29919ef",
+    "src/types.hpp": "246138572327471398208b18b22792bcc06c94badfd5cf78e212f448cc1ce058"
+  },
+  "datasets": [
+    {
+      "name": "dev",
+      "generator": "official",
+      "seed": 1,
+      "requested_events": 1000000,
+      "requested_clicks": 250000,
+      "answer": "official public answer"
+    },
+    {
+      "name": "practice-20m",
+      "generator": "official",
+      "seed": 42,
+      "requested_events": 20000000,
+      "requested_clicks": 5000000
+    },
+    {
+      "name": "final-60m",
+      "generator": "official generator with local streaming-only buffering adaptation",
+      "seed": 20261121,
+      "requested_events": 60000000,
+      "requested_clicks": 15000000,
+      "generator_validation": "Adapted and official generators produced byte-identical 1M seed-1 files: all 87 paths, sizes and SHA256 hashes match. This is generator-equivalence evidence for that case, not an official 60M answer."
+    }
+  ],
+  "runs": [
+    {
+      "name": "dev-v4",
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+      "exit_code": 0,
+      "oom_killed": false,
+      "container_seconds": 1.05399,
+      "memory": "6g",
+      "n_cpu": 8,
+      "finished_utc": "2026-11-21T09:25:44.754162357Z",
+      "timing_valid": true
+    },
+    {
+      "name": "practice20m-v4",
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+      "exit_code": 0,
+      "oom_killed": false,
+      "container_seconds": 10.4380465,
+      "client_monotonic_seconds": 10.6329173,
+      "memory": "6g",
+      "n_cpu": 8,
+      "started_utc": "2026-11-21T09:32:18.031866646Z",
+      "finished_utc": "2026-11-21T09:32:28.469913139Z",
+      "timing_valid": true
+    },
+    {
+      "name": "final60m-v4",
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+      "exit_code": 0,
+      "oom_killed": false,
+      "memory": "6g",
+      "n_cpu": 8,
+      "finished_utc": "2026-11-21T09:27:03.6314613Z",
+      "discarded_container_seconds": -28737.6498617,
+      "container_seconds": null,
+      "timing_valid": false,
+      "timing_note": "PowerShell timestamp coercion lost UTC; excluded from all timing statistics. Successful exit and output remain valid evidence."
+    },
+    {
+      "name": "final60m-v4-r2",
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+      "exit_code": 0,
+      "oom_killed": false,
+      "container_seconds": 54.3672655,
+      "client_monotonic_seconds": 54.6549518,
+      "memory": "6g",
+      "n_cpu": 8,
+      "started_utc": "2026-11-21T09:28:45.597288321Z",
+      "finished_utc": "2026-11-21T09:29:39.964553846Z",
+      "timing_valid": true
+    },
+    {
+      "name": "final60m-v4-r3",
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+      "exit_code": 0,
+      "oom_killed": false,
+      "container_seconds": 56.1888216,
+      "client_monotonic_seconds": 56.4651356,
+      "memory": "6g",
+      "n_cpu": 8,
+      "started_utc": "2026-11-21T09:29:46.588371026Z",
+      "finished_utc": "2026-11-21T09:30:42.777192578Z",
+      "timing_valid": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "fixtures-v4",
+      "passed": 36,
+      "total": 36,
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe"
+    },
+    {
+      "name": "adversarial-v4",
+      "passed": 240,
+      "total": 240,
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe"
+    },
+    {
+      "name": "multiseed-v4",
+      "passed": 5,
+      "total": 5,
+      "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe"
+    },
+    {
+      "name": "dev-v4-comparison",
+      "reference": "official public seed-1 development answer",
+      "tables": {
+        "user_daily": {
+          "actual_rows": 117038,
+          "expected_rows": 117038,
+          "match": true,
+          "actual_totals": {
+            "sessions": 179366,
+            "events": 977930,
+            "revenue_cents": 376461330
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 27400,
+          "expected_rows": 27400,
+          "match": true,
+          "actual_totals": {
+            "sessions": 179366,
+            "revenue_cents": 376461330,
+            "assisted_sessions": 1932099
+          }
+        }
+      }
+    },
+    {
+      "name": "practice20m-v4-comparison",
+      "reference": "original v1 implementation output; not an independent full-size answer",
+      "tables": {
+        "user_daily": {
+          "actual_rows": 2246306,
+          "expected_rows": 2246306,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3407788,
+            "events": 19564682,
+            "revenue_cents": 6680740085
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 28014,
+          "expected_rows": 28014,
+          "match": true,
+          "actual_totals": {
+            "sessions": 3407788,
+            "revenue_cents": 6680740085,
+            "assisted_sessions": 36030031
+          }
+        }
+      }
+    },
+    {
+      "name": "final60m-v4-r2-comparison",
+      "reference": "first successful v4 output; repeat determinism only",
+      "tables": {
+        "user_daily": {
+          "actual_rows": 6643504,
+          "expected_rows": 6643504,
+          "match": true,
+          "actual_totals": {
+            "sessions": 10042701,
+            "events": 58625071,
+            "revenue_cents": 17123475935
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 28014,
+          "expected_rows": 28014,
+          "match": true,
+          "actual_totals": {
+            "sessions": 10042701,
+            "revenue_cents": 17123475935,
+            "assisted_sessions": 108071722
+          }
+        }
+      }
+    },
+    {
+      "name": "final60m-v4-r3-comparison",
+      "reference": "first successful v4 output; repeat determinism only",
+      "tables": {
+        "user_daily": {
+          "actual_rows": 6643504,
+          "expected_rows": 6643504,
+          "match": true,
+          "actual_totals": {
+            "sessions": 10042701,
+            "events": 58625071,
+            "revenue_cents": 17123475935
+          }
+        },
+        "campaign_daily": {
+          "actual_rows": 28014,
+          "expected_rows": 28014,
+          "match": true,
+          "actual_totals": {
+            "sessions": 10042701,
+            "revenue_cents": 17123475935,
+            "assisted_sessions": 108071722
+          }
+        }
+      }
+    },
+    {
+      "name": "final60m-v4-invariants",
+      "status": "PASS",
+      "scope": "Necessary consistency checks only; PASS does not establish exact row correctness, correct identity resolution, session boundaries, or attribution.",
+      "expected_events": 58625071,
+      "tables": {
+        "user_daily": {
+          "rows": 6643504,
+          "files": 8,
+          "totals": {
+            "sessions": 10042701,
+            "events": 58625071,
+            "revenue_cents": 17123475935
+          }
+        },
+        "campaign_daily": {
+          "rows": 28014,
+          "files": 1,
+          "totals": {
+            "sessions": 10042701,
+            "purchasing_sessions": 1368979,
+            "revenue_cents": 17123475935,
+            "assisted_sessions": 108071722
+          }
+        }
+      },
+      "checks": [
+        {
+          "name": "user_daily.schema",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.required_nonnull",
+          "passed": true,
+          "violations": 0,
+          "null_counts": {
+            "user_id": 0,
+            "day": 0,
+            "sessions": 0,
+            "events": 0,
+            "revenue_cents": 0
+          }
+        },
+        {
+          "name": "user_daily.nonempty_id",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.unique_primary_key",
+          "passed": true,
+          "violations": 0,
+          "duplicate_keys": 0
+        },
+        {
+          "name": "user_daily.sessions_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.events_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.revenue_cents_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.schema",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.required_nonnull",
+          "passed": true,
+          "violations": 0,
+          "null_counts": {
+            "campaign_id": 0,
+            "channel": 0,
+            "day": 0,
+            "sessions": 0,
+            "purchasing_sessions": 0,
+            "revenue_cents": 0,
+            "assisted_sessions": 0
+          }
+        },
+        {
+          "name": "campaign_daily.nonempty_id",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.unique_primary_key",
+          "passed": true,
+          "violations": 0,
+          "duplicate_keys": 0
+        },
+        {
+          "name": "campaign_daily.sessions_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.purchasing_sessions_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.revenue_cents_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.assisted_sessions_nonnegative",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.sessions_at_least_one",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.events_at_least_sessions",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.category_null_iff_zero_revenue",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "user_daily.expected_event_total",
+          "passed": true,
+          "violations": 0,
+          "actual": 58625071,
+          "expected": 58625071
+        },
+        {
+          "name": "campaign_daily.purchasing_at_most_sessions",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.positive_revenue_iff_purchasing",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.nonorganic_assists_at_least_sessions",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.organic_assists_zero",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.organic_channel",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "campaign_daily.has_credit_or_assist",
+          "passed": true,
+          "violations": 0
+        },
+        {
+          "name": "cross_table.daily_sessions_and_revenue",
+          "passed": true,
+          "violations": 0
+        }
+      ],
+      "errors": [],
+      "daily_totals": [
+        {
+          "day": "2027-05-20",
+          "user_sessions": 719039,
+          "campaign_sessions": 719039,
+          "user_revenue_cents": 1180375510,
+          "campaign_revenue_cents": 1180375510,
+          "match": true
+        },
+        {
+          "day": "2027-05-21",
+          "user_sessions": 718181,
+          "campaign_sessions": 718181,
+          "user_revenue_cents": 1159438536,
+          "campaign_revenue_cents": 1159438536,
+          "match": true
+        },
+        {
+          "day": "2027-05-22",
+          "user_sessions": 718515,
+          "campaign_sessions": 718515,
+          "user_revenue_cents": 1190926831,
+          "campaign_revenue_cents": 1190926831,
+          "match": true
+        },
+        {
+          "day": "2027-05-23",
+          "user_sessions": 718005,
+          "campaign_sessions": 718005,
+          "user_revenue_cents": 1224081202,
+          "campaign_revenue_cents": 1224081202,
+          "match": true
+        },
+        {
+          "day": "2027-05-24",
+          "user_sessions": 717096,
+          "campaign_sessions": 717096,
+          "user_revenue_cents": 1175376747,
+          "campaign_revenue_cents": 1175376747,
+          "match": true
+        },
+        {
+          "day": "2027-05-25",
+          "user_sessions": 719336,
+          "campaign_sessions": 719336,
+          "user_revenue_cents": 1305735014,
+          "campaign_revenue_cents": 1305735014,
+          "match": true
+        },
+        {
+          "day": "2027-05-26",
+          "user_sessions": 717507,
+          "campaign_sessions": 717507,
+          "user_revenue_cents": 1367683195,
+          "campaign_revenue_cents": 1367683195,
+          "match": true
+        },
+        {
+          "day": "2027-05-27",
+          "user_sessions": 716641,
+          "campaign_sessions": 716641,
+          "user_revenue_cents": 1235093054,
+          "campaign_revenue_cents": 1235093054,
+          "match": true
+        },
+        {
+          "day": "2027-05-28",
+          "user_sessions": 718653,
+          "campaign_sessions": 718653,
+          "user_revenue_cents": 1226448919,
+          "campaign_revenue_cents": 1226448919,
+          "match": true
+        },
+        {
+          "day": "2027-05-29",
+          "user_sessions": 718425,
+          "campaign_sessions": 718425,
+          "user_revenue_cents": 1168299095,
+          "campaign_revenue_cents": 1168299095,
+          "match": true
+        },
+        {
+          "day": "2027-05-30",
+          "user_sessions": 719324,
+          "campaign_sessions": 719324,
+          "user_revenue_cents": 1297268651,
+          "campaign_revenue_cents": 1297268651,
+          "match": true
+        },
+        {
+          "day": "2027-05-31",
+          "user_sessions": 719298,
+          "campaign_sessions": 719298,
+          "user_revenue_cents": 1165885438,
+          "campaign_revenue_cents": 1165885438,
+          "match": true
+        },
+        {
+          "day": "2027-06-01",
+          "user_sessions": 718130,
+          "campaign_sessions": 718130,
+          "user_revenue_cents": 1266192493,
+          "campaign_revenue_cents": 1266192493,
+          "match": true
+        },
+        {
+          "day": "2027-06-02",
+          "user_sessions": 704551,
+          "campaign_sessions": 704551,
+          "user_revenue_cents": 1160671250,
+          "campaign_revenue_cents": 1160671250,
+          "match": true
+        }
+      ],
+      "elapsed_seconds": 2.446488
+    }
+  ],
+  "failed_attempts": [
+    {
+      "name": "final60m-v1",
+      "image": "sha256:6c04c6b64ba9a8e7ee1531cb1faa702d7f742c27143935076cfb2505ae901bfc",
+      "exit_code": 137,
+      "oom_killed": true,
+      "container_seconds": 93.7861643,
+      "memory": "6g",
+      "n_cpu": 8,
+      "finished_utc": "2026-11-21T09:01:43.651589144Z",
+      "timing_valid": true
+    },
+    {
+      "name": "final60m-v3",
+      "image": "sha256:e4aac63e0f3fe4871d7f04f87861db629425a015a22e449b191eb8fdeba0226e",
+      "exit_code": 124,
+      "oom_killed": false,
+      "container_seconds": 180.9510305,
+      "memory": "6g",
+      "n_cpu": 8,
+      "finished_utc": "2026-11-21T09:17:55.625696939Z",
+      "timing_valid": true
+    }
+  ],
+  "notes": [
+    "Source hashes identify the final runtime sources; prior failed image builds used earlier versions.",
+    "36 official fixtures, 240 adversarial fixtures and five 100K-event seeds were tested through the complete final container.",
+    "The native final solver also passed 36 fixtures under ASan/UBSan/leak checking. Optimized aggregation passed 300 random cases plus boundaries against a separate brute-force implementation.",
+    "60M invariants and identical repeat outputs do not establish independent full-row correctness. No official hidden evaluation was obtained.",
+    "The first successful 60M run has invalid wall timing; only the two later 60M runtimes are reported. No three-run median is available.",
+    "Failed v1 had OOM=true below its container limit in the shared VM; failed v3 exited124 at the 180-second timeout. Neither result is a measurement in the competition's 24 GiB environment."
+  ]
+}

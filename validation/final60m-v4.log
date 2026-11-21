@@ -1,0 +1,19 @@
+links elapsed=3.99915s
+events parsed elapsed=18.8582s
+events globally deduped elapsed=26.6711s
+events validated elapsed=48.5418s
+event partitions compacted elapsed=49.1763s
+clicks parsed elapsed=52.764s
+click partitions compacted elapsed=52.9663s
+events parsed=63600367 surviving=58625071 linked_ids=3588866
+ingest seconds=53.8102 elapsed=53.8102 max_rss_kib=6266456
+parsed_events=63600367 surviving_events=58625071
+aggregate seconds=5.06678 elapsed=58.877 max_rss_kib=6266456
+columns seconds=2.02872 elapsed=60.9057 max_rss_kib=6266456
+parquet seconds=0.770586 rows=6671518 files=9
+cgroup_memory_peak_bytes=6442450944
+cgroup_anon=118784
+cgroup_file=63062016
+cgroup_file_mapped=917504
+cgroup_pgfault=1710066
+cgroup_pgmajfault=18180

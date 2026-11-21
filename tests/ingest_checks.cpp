@@ -6,10 +6,71 @@
 #include <iostream>
 #include <map>
 #include <stdexcept>
+#include <unistd.h>
 
 using namespace shopping;
 void require(bool condition,const std::string& what) {
   if(!condition)throw std::runtime_error(what);
+}
+void id_storage_checks() {
+  char pattern[]="/tmp/shopping-ingest-ids-XXXXXX";
+  char* directory=mkdtemp(pattern);require(directory!=nullptr,"create temporary ID fixture");
+  struct Cleanup {
+    std::filesystem::path path;
+    ~Cleanup(){std::error_code ec;std::filesystem::remove_all(path,ec);}
+  } cleanup{directory};
+  const auto& root=cleanup.path;
+  for(const char* folder:{"events","clicks","links"})std::filesystem::create_directory(root/folder);
+  auto write=[&](const std::filesystem::path& path,const std::string& value){
+    std::ofstream file(root/path,std::ios::binary);file<<value;require(bool(file),"write temporary ID fixture");
+  };
+  write("manifest.json","{\"window_start\":\"2026-10-01T00:00:00Z\",\"window_end\":\"2026-10-15T00:00:00Z\"}");
+  write("products.csv","product_id,category\np1,shoes\n");
+  write("campaigns.csv","campaign_id,channel\nc_1,search\n");
+  write("links/part.csv","user_id_a,user_id_b\n");
+  write("clicks/part.csv","click_id,user_id,campaign_id,ts\n");
+  const std::string header="event_id,user_id,ts,ingest_ts,event_type,product_id,price_cents\n";
+  std::string later=header,earlier=header;
+  std::vector<std::string> ids={
+    "short", "0123456789abcde", "0123456789abcdef",
+    "0123456789abcdefA", "0123456789abcdefB",
+    std::string(256,'x')+"A", std::string(256,'x')+"B",
+    "0123456789abcde\r", std::string("id\0suffix",9)
+  };
+  std::map<std::string,std::pair<uint64_t,uint64_t>> expected;
+  for(size_t i=0;i<ids.size();++i){
+    std::string user="u";user+=std::to_string(i);
+    const std::string price=std::to_string(101+i);
+    // Quoting changes only syntax, including the 16/17-byte storage boundary.
+    later+=ids[i]+",wrong_user,2026-10-03T10:00:00Z,2026-10-03T10:05:00Z,purchase,p1,999\n";
+    earlier+='"'+ids[i]+"\","+user+",2026-10-03T10:00:00Z,2026-10-03T10:01:00Z,purchase,p1,"+price+"\n";
+    expected[user]={1,101+i};
+  }
+  const std::string invalid_id=std::string(256,'x')+"invalid";
+  later+=invalid_id+",rescue_forbidden,2026-10-03T10:00:00Z,2026-10-03T10:05:00Z,purchase,p1,999\n";
+  earlier+='"'+invalid_id+"\",dropped_user,bad_ts,2026-10-03T10:01:00Z,purchase,p1,999\n";
+  // A malformed earlier copy cannot suppress a later well-formed long ID.
+  const std::string malformed_id=std::string(256,'m');
+  earlier+=malformed_id+"\",wrong_user,2026-10-03T10:00:00Z,2026-10-03T10:00:00Z,purchase,p1,999\n";
+  later+=malformed_id+",u_malformed,2026-10-03T10:00:00Z,2026-10-03T10:05:00Z,purchase,p1,250\n";
+  expected["u_malformed"]={1,250};
+  earlier+="intern_a,shared_unlinked,2026-10-03T10:00:00Z,2026-10-03T10:01:00Z,purchase,p1,123\n";
+  later+="intern_b,shared_unlinked,2026-10-03T10:00:00Z,2026-10-03T10:05:00Z,purchase,p1,321\n";
+  expected["shared_unlinked"]={2,444};
+  write("events/part-a.csv",later);write("events/part-b.csv",earlier);
+  for(unsigned threads:{1u,4u}){
+    auto dataset=load_dataset(root.string(),threads,7);
+    std::map<std::string,std::pair<uint64_t,uint64_t>> actual;
+    const char* shared_address=nullptr;
+    for(const auto& partition:dataset.events)for(const auto& event:partition){
+      auto& totals=actual[std::string(event.user)];++totals.first;totals.second+=event.price;
+      if(event.user=="shared_unlinked"){
+        if(shared_address)require(shared_address==event.user.data(),"unlinked user is interned exactly once");
+        shared_address=event.user.data();
+      }
+    }
+    require(actual==expected,"short/long/quoted event ID dedup regression");
+  }
 }
 int main(int argc,char** argv) {
   try {
@@ -34,6 +95,7 @@ int main(int argc,char** argv) {
     require(parse::number("000000250",10000000,price)&&price==250,"leading zero price");
     require(!parse::number("10000001",10000000,price),"price limit");
     require(!parse::number("250\r",10000000,price),"price CR");
+    id_storage_checks();
     require(argc==2,"usage: ingest_checks FIXTURES");
     size_t checked=0;
     for(const auto& entry:std::filesystem::directory_iterator(argv[1])) {
@@ -59,6 +121,6 @@ int main(int argc,char** argv) {
       require(actual==expected,"ingest mismatch "+entry.path().filename().string());
       ++checked;
     }
-    std::cout<<"parser boundaries and "<<checked<<" fixture ingest totals passed\n";
+    std::cout<<"parser boundaries, short/long/quoted IDs and "<<checked<<" fixture ingest totals passed\n";
   }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

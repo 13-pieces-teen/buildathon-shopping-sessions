@@ -12,14 +12,20 @@
 namespace shopping {
 namespace {
 
-bool bytes_less(SV a, SV b) {
+int compare_bytes(SV a, SV b) {
+  // Linked aliases share the canonical name's backing bytes. Equal pointers
+  // need no memory read; lengths still distinguish any prefix string_views.
+  if (a.data() == b.data())
+    return (a.size() > b.size()) - (a.size() < b.size());
   const size_t n = std::min(a.size(), b.size());
   if (n) {
     const int compared = std::memcmp(a.data(), b.data(), n);
-    if (compared) return compared < 0;
+    if (compared) return compared;
   }
-  return a.size() < b.size();
+  return (a.size() > b.size()) - (a.size() < b.size());
 }
+
+bool bytes_less(SV a, SV b) { return compare_bytes(a, b) < 0; }
 
 int32_t day_of(int64_t ts) {
   int64_t day = ts / DAY;
@@ -254,12 +260,14 @@ public:
       return;
     }
     std::sort(events.begin(), events.end(), [](const Event& a, const Event& b) {
-      return a.user == b.user ? a.ts < b.ts : bytes_less(a.user, b.user);
+      const int person = compare_bytes(a.user, b.user);
+      return person ? person < 0 : a.ts < b.ts;
     });
     std::sort(clicks.begin(), clicks.end(), [](const Click& a, const Click& b) {
-      if (a.user != b.user) return bytes_less(a.user, b.user);
-      if (a.ts != b.ts) return a.ts < b.ts;
-      return bytes_less(a.id, b.id);
+      const int person = compare_bytes(a.user, b.user);
+      // attribute() explicitly selects the minimum click ID at a tied time;
+      // interval unions depend only on time, so sorting tied IDs is redundant.
+      return person ? person < 0 : a.ts < b.ts;
     });
     size_t event_at = 0, click_at = 0;
     while (event_at < events.size()) {

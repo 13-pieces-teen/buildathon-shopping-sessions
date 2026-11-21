@@ -4,6 +4,7 @@
 #include <atomic>
 #include <chrono>
 #include <cstring>
+#include <deque>
 #include <exception>
 #include <filesystem>
 #include <fstream>
@@ -12,6 +13,7 @@
 #include <stdexcept>
 #include <thread>
 #include <unordered_map>
+#include <unordered_set>
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -123,12 +125,33 @@ struct IdentityEqual {
   bool operator()(SV a,HashedId b)const{return a==b.value;}
   bool operator()(HashedId a,SV b)const{return a.value==b;}
 };
+struct InternPool final:Storage {
+  struct Shard {
+    std::mutex mutex;
+    // deque insertion preserves references, including short-string storage.
+    std::deque<std::string> strings;
+    std::unordered_set<SV,IdentityHash,IdentityEqual> values;
+  };
+  std::vector<Shard> shards;
+  explicit InternPool(unsigned count):shards(count){}
+  SV intern(SV value,uint64_t hash) {
+    auto& shard=shards[hash%shards.size()];
+    std::lock_guard lock(shard.mutex);
+    auto found=shard.values.find(HashedId{value,hash});
+    if(found!=shard.values.end())return *found;
+    shard.strings.emplace_back(value);
+    SV owned=shard.strings.back();
+    shard.values.emplace(owned);
+    return owned;
+  }
+};
 struct Identities {
   std::unordered_map<SV,uint32_t,IdentityHash,IdentityEqual> index;
   std::vector<uint32_t> parent,weight;
   std::vector<SV> names;
   std::vector<uint32_t> partition_for_id;
   unsigned partitions=1;
+  InternPool* unlinked=nullptr;
   uint32_t add(SV name) {
     auto [it,inserted]=index.try_emplace(name,static_cast<uint32_t>(names.size()));
     if(inserted){parent.push_back(it->second);weight.push_back(1);names.push_back(name);}
@@ -153,7 +176,7 @@ struct Identities {
   std::pair<SV,uint32_t> canonical(SV user)const {
     const uint64_t hash=hash_sv(user);
     auto it=index.find(HashedId{user,hash});
-    if(it==index.end())return {user,static_cast<uint32_t>(hash%partitions)};
+    if(it==index.end())return {unlinked->intern(user,hash),static_cast<uint32_t>(hash%partitions)};
     return {names[it->second],partition_for_id[it->second]};
   }
 };
@@ -163,8 +186,16 @@ struct RawEvent {
   uint64_t hash;
   int64_t ingest;
   uint32_t length,id_length;
-  SV id()const{return SV(line+(*line=='"'),id_length);}
+  std::array<char,16> inline_id;
+  SV id()const {
+    // The complete short key was copied while this source line was hot. Never
+    // dereference the CSV mmap during short-key equality checks; at full scale
+    // those pages may have been evicted by the resident raw records.
+    if(id_length<=inline_id.size())return SV(inline_id.data(),id_length);
+    return SV(line+(*line=='"'),id_length); // exact, untruncated long-key fallback
+  }
 };
+static_assert(sizeof(RawEvent)==48);
 SV json_string(SV input,SV key) {
   std::string needle;
   needle.reserve(key.size()+2);needle.push_back('"');needle.append(key);needle.push_back('"');
@@ -205,6 +236,9 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
     }
   });
   Identities identities;
+  auto unlinked=std::make_unique<InternPool>(std::max(64u,threads*16));
+  identities.unlinked=unlinked.get();
+  data.storage.push_back(std::move(unlinked));
   for(auto chunk:map_directory(data,base/"links"))lines(chunk,[&](SV line){
     std::array<SV,2> f;if(parse::csv(line,f)&&!f[0].empty()&&!f[1].empty())identities.join(f[0],f[1]);
   });
@@ -215,7 +249,9 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
   unsigned buckets=std::max(64u,threads*16);
   // Raw records retain input order. Buckets contain only stable pointers into
   // completed chunks, so dedup never dictates the order of CSV re-reading.
+  const size_t event_storage_begin=data.storage.size();
   auto event_chunks=map_directory(data,base/"events");
+  const size_t event_storage_end=data.storage.size();
   std::vector<std::vector<RawEvent>> raw(event_chunks.size());
   std::vector<std::vector<std::vector<RawEvent*>>> raw_buckets(buckets);
   std::vector<std::vector<std::vector<Event>>> event_fragments(partitions);
@@ -234,7 +270,9 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
       if(!parse::timestamp(f[3],ingest))return; // ingest_ts is guaranteed valid F1.
       if(line.size()>UINT32_MAX||f[0].size()>UINT32_MAX)throw std::runtime_error("CSV row exceeds 4 GiB");
       uint64_t h=hash_sv(f[0]);
-      entries.push_back({line.data(),h,ingest,static_cast<uint32_t>(line.size()),static_cast<uint32_t>(f[0].size())});
+      RawEvent entry{line.data(),h,ingest,static_cast<uint32_t>(line.size()),static_cast<uint32_t>(f[0].size()),{}};
+      if(f[0].size()<=entry.inline_id.size())std::memcpy(entry.inline_id.data(),f[0].data(),f[0].size());
+      entries.push_back(entry);
     });
     compact(entries); // no further mutation of this vector's capacity
     std::vector<std::vector<RawEvent*>> local(buckets);
@@ -292,6 +330,11 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
   });
   data.surviving_events=surviving;progress("events validated");
   parallel(partitions,threads,[&](size_t p,unsigned){flatten(event_fragments[p],data.events[p]);});
+  // Event records now contain only numbers and canonical IDs owned by links or
+  // InternPool. All RawEvent pointers are gone, so the large CSV mappings are
+  // no longer needed. Click mappings must remain: Click::id still uses them.
+  event_chunks.clear();
+  for(size_t i=event_storage_begin;i<event_storage_end;++i)data.storage[i].reset();
   progress("event partitions compacted");
 
   auto click_chunks=map_directory(data,base/"clicks");

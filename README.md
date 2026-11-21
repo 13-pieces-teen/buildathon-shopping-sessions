@@ -34,6 +34,12 @@ locations use the standard environment variables. Diagnostics go to stderr.
 - Events are hash-partitioned by full event ID, deduplicated to the smallest
   ingest timestamp, and only then validated. Exact key comparisons resolve hash
   collisions. Invalid earliest copies cannot be rescued by later copies.
+- Event IDs of at most 16 bytes are stored inline in raw descriptors; longer
+  IDs retain exact full-byte comparison. This avoids random source-file paging
+  during duplicate checks without using hashes as identity proofs.
+- Unlinked person names are interned in sharded, address-stable storage. Linked
+  names refer to the much smaller links files. Event CSV mappings can then be
+  released after validation instead of remaining live throughout sorting.
 - Surviving events and clicks are partitioned by canonical person and sorted.
   A scan constructs sessions and user-day purchase-category revenue totals.
 - Last-click attribution merges ordered sessions and clicks, resolving timestamp
@@ -72,33 +78,48 @@ python tests/adversarial.py --output /path/to/generated-cases --cases 120
 integer logical types. `tests/oracle.py` also checks key uniqueness. The oracle
 uses independent datetime/DSU/session logic and a deliberately naive click scan.
 
-Validation on 2026-11-21: both initial and optimized engines match all 36 official
-fixtures and the public seed-1 1M-event/250K-click development answer exactly.
-The initial complete container additionally passes 240 adversarial fixtures
-(120 original inputs and 120 separately executed equivalent transformations),
-and five official generated seeds with 100K events/25K clicks each, against the
-independent Python oracle. The optimized version's corresponding extended
-regression is recorded in the development validation report when finished.
-The aggregation module passes 300 randomized comparisons against an independent
-C++ brute-force oracle. The initial native executable also ran all official
-fixtures under ASan/UBSan without a report.
+The final v4 container was validated on 2026-11-21:
 
-Local single-run measurements (8 CPU quota, 6 GiB container limit, Windows bind
-mounts in a shared Docker Desktop VM; NOT official scores):
+- All **36 official fixtures** and the public seed-1 **1M-event/250K-click answer**
+  match exactly, including schemas, nulls and both complete output tables.
+- All **240 adversarial fixtures** pass against the independent Python oracle:
+  120 original inputs and 120 separately executed equivalent transformations.
+- All **five generated seeds** (100K events/25K clicks each) match the independent
+  Python oracle exactly.
+- The optimized aggregation module passes 300 randomized comparisons against
+  an independent C++ brute-force oracle. The final native executable ran all
+  36 official fixtures under ASan/UBSan with leak checking and no report.
+- The complete 20M output matches the original implementation exactly. Two 60M
+  repeat outputs match the first successful v4 output exactly; 26 consistency
+  checks also pass on that first output.
 
-| Input | Initial container | Optimized container | Correctness evidence |
-| --- | ---: | ---: | --- |
-| Public 1M events / 250K clicks | 2.034 s | 1.033 s | Exact official answers |
-| Generated 20M events / 5M clicks, seed 42 | 21.749 s | 16.774 s | Both implementations identical; 26 output invariants pass on initial output |
-| Generated 60M events / 15M clicks | OOM, exit 137 | Not yet validated | No final-scale performance claim |
+Local container start-to-exit timings (8 CPU quota, 6 GiB container limit,
+Windows bind mounts in a shared Docker Desktop VM; **not official scores**):
 
-The 60M attempt was killed while the entire shared Linux VM had about 7.6 GiB
-and other workloads were active; the container's reported peak was about 3 GiB,
-below its own 6 GiB limit. This is not a measurement under the competition's
-24 GiB environment. Single-run timings are affected by shared load and caching.
-Invariants and agreement between versions do not establish independently proven
-correctness for every large output row. Hidden-data correctness and final-scale
-performance remain unverified until further evaluation.
+| Input | Final v4 runtime | Correctness evidence |
+| --- | ---: | --- |
+| Public 1M events / 250K clicks | 1.054 s | Exact official answers |
+| Generated 20M events / 5M clicks, seed 42 | 10.438 s | Exact match to original implementation; 26 invariants pass on original output |
+| Generated 60M events / 15M clicks, seed 20261121 | 54.367 s, 56.189 s | Two exact repeats; 26 consistency checks; no official 60M answer |
+
+Both timed 60M repeats completed within a 180-second timeout. The final image is
+Linux/amd64, runs as UID 1000, and is 410,005,173 bytes. Its immutable image ID,
+source hashes, timings, comparison summaries and failed-run history are in
+[`validation/local-results.json`](validation/local-results.json).
+
+The first v4 60M run completed successfully, but its wall-time measurement was
+invalid because PowerShell converted timestamps inconsistently. It is excluded
+from timing statistics. The two reported repeats use raw UTC timestamps and
+agree with an independent client-side monotonic timer. They are two measurements,
+not a three-run median. Shared load and file caching affect these timings.
+
+Earlier attempts are retained as evidence: v1 was OOM-killed in the shared
+approximately 7.6 GiB Linux VM while below its own 6 GiB limit; v3 timed out
+during deduplication. The inline-ID and interning changes allowed v4 to finish.
+The competition's 24 GiB environment has not been tested locally. Consistency
+checks and agreement between versions or repeats do not prove independently
+correct results for every large output row. Hidden-data correctness, official
+runtime and leaderboard placement remain unverified.
 
 ## Provenance and licensing
 
@@ -108,6 +129,7 @@ answers or generator-specific identities/session labels are used by the solver.
 The official Rust generator is used only for local test data and is not part of
 the submitted runtime. Runtime dependencies are the C++ standard library and
 Apache Arrow/PyArrow 22.0.0 (Apache License 2.0); the Docker base is Python 3.12
-on Debian Bookworm, with the Rust Bookworm image supplying GCC at build time.
+on Debian Bookworm, with Debian's GCC 12 toolchain installed only in the build
+stage. No Rust toolchain is required to build or run the submitted solver.
 
 This implementation is released under the MIT License.
