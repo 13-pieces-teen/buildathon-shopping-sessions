@@ -1,0 +1,64 @@
+#include "types.hpp"
+#include "parse.hpp"
+#include <array>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <stdexcept>
+
+using namespace shopping;
+void require(bool condition,const std::string& what) {
+  if(!condition)throw std::runtime_error(what);
+}
+int main(int argc,char** argv) {
+  try {
+    int64_t t=0,other=0;
+    require(parse::timestamp("2028-02-29T00:00:00Z",t),"leap day");
+    require(parse::timestamp("2028-02-29T23:59:00+23:59",other)&&t==other,"maximum offset");
+    require(parse::timestamp("2028-02-29T00:00:00-00:00",other)&&t==other,"negative zero offset");
+    require(parse::timestamp("0000000000000000000000000000000000000000000000000000000000086400000",t)&&t==86400000,"arbitrary leading zeros");
+    for(SV bad:{"2026-02-29T00:00:00Z","2028-02-30T00:00:00Z","2026-13-01T00:00:00Z",
+                "2026-10-01T24:00:00Z","2026-10-01T00:00:60Z","2026-10-01t00:00:00Z",
+                "2026-10-01T00:00:00z","2026-10-01T00:00:00Z\r","2026-10-01T00:00:00+24:00",
+                "2026-10-01T00:00:00+05:60","2026-10-01T00:00:00+0200","1.79e12","-5","+5",
+                "999999999999999999999999999999999999999999999999999999999999999999"})
+      require(!parse::timestamp(bad,t),"accepted invalid timestamp "+std::string(bad));
+    std::array<SV,2> pair;
+    require(parse::csv("\" u1\",u1 \r",pair)&&pair[0]==" u1"&&pair[1]=="u1 \r","preserve whitespace and CR");
+    require(parse::csv("\"\",",pair)&&pair[0].empty()&&pair[1].empty(),"quoted empty");
+    require(parse::csv("user_id_a,user_id_b",pair),"header-like data row");
+    for(SV bad:{"","a","a,b,c","\"a,b\"","a,b\"","a,\"b\"\r","a,\"\"\""})
+      require(!parse::csv(bad,pair),"accepted malformed CSV "+std::string(bad));
+    uint64_t price=0;
+    require(parse::number("000000250",10000000,price)&&price==250,"leading zero price");
+    require(!parse::number("10000001",10000000,price),"price limit");
+    require(!parse::number("250\r",10000000,price),"price CR");
+    require(argc==2,"usage: ingest_checks FIXTURES");
+    size_t checked=0;
+    for(const auto& entry:std::filesystem::directory_iterator(argv[1])) {
+      if(!entry.is_directory())continue;
+      auto dataset=load_dataset((entry.path()/"input").string(),4,7);
+      using Totals=std::pair<uint64_t,uint64_t>;
+      std::map<std::string,Totals> actual,expected;
+      for(const auto& partition:dataset.events)for(const auto& event:partition){
+        auto& v=actual[std::string(event.user)];++v.first;v.second+=event.price;
+        require(event.price ? event.category<dataset.categories.size() : event.category==INVALID,"category contract");
+      }
+      for(size_t p=0;p<dataset.events.size();++p)for(const auto& event:dataset.events[p])
+        require(hash_sv(event.user)%dataset.events.size()==p,"event partition");
+      for(size_t p=0;p<dataset.clicks.size();++p)for(const auto& click:dataset.clicks[p])
+        require(hash_sv(click.user)%dataset.clicks.size()==p,"click partition");
+      std::ifstream input(entry.path()/"expected"/"user_daily.csv",std::ios::binary);
+      std::string line;std::getline(input,line);
+      while(std::getline(input,line)){
+        std::array<SV,6> f;require(parse::csv(line,f),"expected CSV parse");
+        auto& v=expected[std::string(f[0])];
+        v.first+=std::stoull(std::string(f[3]));v.second+=std::stoull(std::string(f[4]));
+      }
+      require(actual==expected,"ingest mismatch "+entry.path().filename().string());
+      ++checked;
+    }
+    std::cout<<"parser boundaries and "<<checked<<" fixture ingest totals passed\n";
+  }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
+}

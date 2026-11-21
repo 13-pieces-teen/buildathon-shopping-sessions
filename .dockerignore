@@ -1,0 +1,6 @@
+*
+!src/
+!src/**
+!run.sh
+!write_parquet.py
+!Dockerfile
