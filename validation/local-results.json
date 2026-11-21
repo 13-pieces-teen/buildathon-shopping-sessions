@@ -563,8 +563,109 @@
     "Source hashes identify the final runtime sources; prior failed image builds used earlier versions.",
     "36 official fixtures, 240 adversarial fixtures and five 100K-event seeds were tested through the complete final container.",
     "The native final solver also passed 36 fixtures under ASan/UBSan/leak checking. Optimized aggregation passed 300 random cases plus boundaries against a separate brute-force implementation.",
-    "60M invariants and identical repeat outputs do not establish independent full-row correctness. No official hidden evaluation was obtained.",
     "The first successful 60M run has invalid wall timing; only the two later 60M runtimes are reported. No three-run median is available.",
-    "Failed v1 had OOM=true below its container limit in the shared VM; failed v3 exited124 at the 180-second timeout. Neither result is a measurement in the competition's 24 GiB environment."
-  ]
+    "Failed v1 had OOM=true below its container limit in the shared VM; failed v3 exited124 at the 180-second timeout. Neither result is a measurement in the competition's 24 GiB environment.",
+    "The complete local seed-20261121 60M output now matches a separately implemented Python reference across all128 complete-person shards. This adds full-row reference agreement to earlier invariants/repeats, but is not an official hidden-data evaluation.",
+    "The reference checker uses staged record-count conservation, not a source-row ordinal trace; its immutability and resume assumptions are preserved in independent-reference/summary.json. Its elapsed time is verification cost, not solver runtime."
+  ],
+  "independent_full_reference": {
+    "evidence": "independent-reference/summary.json",
+    "status": "MATCH",
+    "datasets": {
+      "dev1m": {
+        "status": "MATCH",
+        "checked_utc": "2026-11-21T09:56:12.117106+00:00",
+        "person_shards_checked": 16,
+        "event_physical_rows": 1072086,
+        "event_bucketed_rows": 1071554,
+        "global_event_winners": 999601,
+        "expected_surviving_events": 977930,
+        "user_daily": {
+          "expected_rows": 117038,
+          "actual_rows": 117038,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "duplicate_keys": 0,
+          "full_row_values_match": true
+        },
+        "campaign_daily": {
+          "expected_rows": 27400,
+          "actual_rows": 27400,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "duplicate_keys": 0,
+          "full_row_values_match": true
+        },
+        "reported_authority": "independent Python reference verification; not official ground truth",
+        "reported_coverage": "Full output-row values and staging record-count conservation; no source-row ordinal trace",
+        "reported_resume_assumption": "Sources/checkpoints remain unchanged. Large source files use path/size/mtime; staged files use exact names/sizes, not content hashes.",
+        "source_snapshot_rechecked_at_finish": true,
+        "report_file": "dev1m/final-report.json"
+      },
+      "final60m": {
+        "status": "MATCH",
+        "checked_utc": "2026-11-21T10:33:08.809878+00:00",
+        "person_shards_checked": 128,
+        "event_physical_rows": 63632262,
+        "event_bucketed_rows": 63600367,
+        "global_event_winners": 59975759,
+        "expected_surviving_events": 58625071,
+        "user_daily": {
+          "expected_rows": 6643504,
+          "actual_rows": 6643504,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "duplicate_keys": 0,
+          "full_row_values_match": true
+        },
+        "campaign_daily": {
+          "expected_rows": 28014,
+          "actual_rows": 28014,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "duplicate_keys": 0,
+          "full_row_values_match": true
+        },
+        "reported_authority": "independent Python reference verification; not official ground truth",
+        "reported_coverage": "Full output-row values and staging record-count conservation; no source-row ordinal trace",
+        "reported_resume_assumption": "Sources/checkpoints remain unchanged. Large source files use path/size/mtime; staged files use exact names/sizes, not content hashes.",
+        "source_snapshot_rechecked_at_finish": true,
+        "report_file": "final60m/final-report.json"
+      }
+    },
+    "authority": "Independent Python full-output reference comparison; NOT official ground truth or official scoring",
+    "coverage": {
+      "full_output_row_values_compared": true,
+      "both_tables_missing_extra_duplicate_counts_zero": true,
+      "staging_record_count_conservation_checked": true,
+      "source_row_ordinal_trace": false,
+      "limitation": "Record-count conservation is not a one-to-one ordinal coverage proof for every raw source row. This package preserves the original checker limitations and resume assumptions.",
+      "official_hidden_dataset_checked": false,
+      "official_score_obtained": false
+    },
+    "reference_verification_run_times": {
+      "dev1m": {
+        "purpose": "Independent reference verification, NOT solver performance or official scoring",
+        "container_seconds": 138.3098784,
+        "client_monotonic_seconds": 138.4617898,
+        "started_utc": "2026-11-21T09:53:53.96038895Z",
+        "finished_utc": "2026-11-21T09:56:12.270267404Z",
+        "exit_code": 0,
+        "oom_killed": false,
+        "duration_scope": "The duration reported by this reference-run record; do not sum shard durations or substitute it for solver runtime. If resumed, checkpoint history remains relevant.",
+        "evidence_file": "dev1m/reference-run.json"
+      },
+      "final60m": {
+        "purpose": "Independent reference verification, NOT solver performance or official scoring",
+        "container_seconds": 2037.3967888,
+        "client_monotonic_seconds": 2038.0255061,
+        "started_utc": "2026-11-21T09:59:11.729500434Z",
+        "finished_utc": "2026-11-21T10:33:09.126289213Z",
+        "exit_code": 0,
+        "oom_killed": false,
+        "duration_scope": "The duration reported by this reference-run record; do not sum shard durations or substitute it for solver runtime. If resumed, checkpoint history remains relevant.",
+        "evidence_file": "final60m/reference-run.json"
+      }
+    }
+  }
 }

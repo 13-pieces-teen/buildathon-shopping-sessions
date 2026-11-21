@@ -89,9 +89,14 @@ The final v4 container was validated on 2026-11-21:
 - The optimized aggregation module passes 300 randomized comparisons against
   an independent C++ brute-force oracle. The final native executable ran all
   36 official fixtures under ASan/UBSan with leak checking and no report.
-- The complete 20M output matches the original implementation exactly. Two 60M
-  repeat outputs match the first successful v4 output exactly; 26 consistency
-  checks also pass on that first output.
+- The complete 20M output matches the original implementation exactly.
+- The complete local **60M-event/15M-click output matches the independent Python
+  reference**: 6,643,504 user rows and 28,014 campaign rows, with zero missing,
+  extra or duplicate keys. All 128 complete-person shards were checked. The
+  reference independently parsed the raw inputs, rebuilt identities and event
+  winners, and used the original oracle's naive per-session click scan.
+- Two 60M repeat outputs also match the first successful v4 output exactly;
+  26 consistency checks pass on that first output.
 
 Local container start-to-exit timings (8 CPU quota, 6 GiB container limit,
 Windows bind mounts in a shared Docker Desktop VM; **not official scores**):
@@ -100,12 +105,21 @@ Windows bind mounts in a shared Docker Desktop VM; **not official scores**):
 | --- | ---: | --- |
 | Public 1M events / 250K clicks | 1.054 s | Exact official answers |
 | Generated 20M events / 5M clicks, seed 42 | 10.438 s | Exact match to original implementation; 26 invariants pass on original output |
-| Generated 60M events / 15M clicks, seed 20261121 | 54.367 s, 56.189 s | Two exact repeats; 26 consistency checks; no official 60M answer |
+| Generated 60M events / 15M clicks, seed 20261121 | 54.367 s, 56.189 s | Full independent Python reference match; two exact repeats; 26 consistency checks |
 
 Both timed 60M repeats completed within a 180-second timeout. The final image is
 Linux/amd64, runs as UID 1000, and is 410,005,173 bytes. Its immutable image ID,
 source hashes, timings, comparison summaries and failed-run history are in
 [`validation/local-results.json`](validation/local-results.json).
+
+The full independent comparison, original run records and frozen reference tools
+are in [`validation/independent-reference/summary.json`](validation/independent-reference/summary.json).
+The 60M reference check took about 34 minutes; this is verification cost, not
+the solver's runtime. It checked full output values and staged record-count
+conservation, without tracing a source ordinal for every raw row. Input and
+checkpoint immutability is required; its detailed resume assumptions are retained
+in the reports. All 89 input/output files copied to native Docker storage were
+individually SHA256-verified before the check.
 
 The first v4 60M run completed successfully, but its wall-time measurement was
 invalid because PowerShell converted timestamps inconsistently. It is excluded
@@ -116,9 +130,9 @@ not a three-run median. Shared load and file caching affect these timings.
 Earlier attempts are retained as evidence: v1 was OOM-killed in the shared
 approximately 7.6 GiB Linux VM while below its own 6 GiB limit; v3 timed out
 during deduplication. The inline-ID and interning changes allowed v4 to finish.
-The competition's 24 GiB environment has not been tested locally. Consistency
-checks and agreement between versions or repeats do not prove independently
-correct results for every large output row. Hidden-data correctness, official
+The competition's 24 GiB environment has not been tested locally. The full-scale
+independent comparison covers the specified local seed; it is not an official
+60M answer or proof for every possible input. Hidden-data correctness, official
 runtime and leaderboard placement remain unverified.
 
 ## Provenance and licensing

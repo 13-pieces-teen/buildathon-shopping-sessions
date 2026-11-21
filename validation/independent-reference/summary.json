@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "packaged_at_utc": "2026-11-21T10:33:41.162234+00:00",
+  "status": "MATCH",
+  "authority": "Independent Python full-output reference comparison; NOT official ground truth or official scoring",
+  "checks": {
+    "dev1m": {
+      "status": "MATCH",
+      "checked_utc": "2026-11-21T09:56:12.117106+00:00",
+      "person_shards_checked": 16,
+      "event_physical_rows": 1072086,
+      "event_bucketed_rows": 1071554,
+      "global_event_winners": 999601,
+      "expected_surviving_events": 977930,
+      "user_daily": {
+        "expected_rows": 117038,
+        "actual_rows": 117038,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "duplicate_keys": 0,
+        "full_row_values_match": true
+      },
+      "campaign_daily": {
+        "expected_rows": 27400,
+        "actual_rows": 27400,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "duplicate_keys": 0,
+        "full_row_values_match": true
+      },
+      "reported_authority": "independent Python reference verification; not official ground truth",
+      "reported_coverage": "Full output-row values and staging record-count conservation; no source-row ordinal trace",
+      "reported_resume_assumption": "Sources/checkpoints remain unchanged. Large source files use path/size/mtime; staged files use exact names/sizes, not content hashes.",
+      "source_snapshot_rechecked_at_finish": true,
+      "report_file": "dev1m/final-report.json"
+    },
+    "final60m": {
+      "status": "MATCH",
+      "checked_utc": "2026-11-21T10:33:08.809878+00:00",
+      "person_shards_checked": 128,
+      "event_physical_rows": 63632262,
+      "event_bucketed_rows": 63600367,
+      "global_event_winners": 59975759,
+      "expected_surviving_events": 58625071,
+      "user_daily": {
+        "expected_rows": 6643504,
+        "actual_rows": 6643504,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "duplicate_keys": 0,
+        "full_row_values_match": true
+      },
+      "campaign_daily": {
+        "expected_rows": 28014,
+        "actual_rows": 28014,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "duplicate_keys": 0,
+        "full_row_values_match": true
+      },
+      "reported_authority": "independent Python reference verification; not official ground truth",
+      "reported_coverage": "Full output-row values and staging record-count conservation; no source-row ordinal trace",
+      "reported_resume_assumption": "Sources/checkpoints remain unchanged. Large source files use path/size/mtime; staged files use exact names/sizes, not content hashes.",
+      "source_snapshot_rechecked_at_finish": true,
+      "report_file": "final60m/final-report.json"
+    }
+  },
+  "coverage": {
+    "full_output_row_values_compared": true,
+    "both_tables_missing_extra_duplicate_counts_zero": true,
+    "staging_record_count_conservation_checked": true,
+    "source_row_ordinal_trace": false,
+    "limitation": "Record-count conservation is not a one-to-one ordinal coverage proof for every raw source row. This package preserves the original checker limitations and resume assumptions.",
+    "official_hidden_dataset_checked": false,
+    "official_score_obtained": false
+  },
+  "frozen_tools": {
+    "full_oracle_check.py": {
+      "sha256": "fb90211ba688eef6a39af1f1a8e9d7f34cbe84339ace23e1c101005812d0954a",
+      "matches_both_configurations": true
+    },
+    "oracle.py": {
+      "sha256": "d1afef54e524328bd2fbd630c8a14570a9218d0f1305b5aed5504b32d91eb91f",
+      "matches_both_configurations": true
+    }
+  },
+  "final60m_input_copy": {
+    "status": "BYTE_IDENTICAL",
+    "files": 89,
+    "bytes": 5715205816,
+    "configuration_inventory_paths_and_sizes_match": true,
+    "scope": "Saved SHA256 manifest establishes the recorded original-to-reference copies. Packaging does not reread or rehash the multi-GB data. The checker rechecks large source files by path/size/mtime, not a final full-file hash."
+  },
+  "reference_verification_run_times": {
+    "dev1m": {
+      "purpose": "Independent reference verification, NOT solver performance or official scoring",
+      "container_seconds": 138.3098784,
+      "client_monotonic_seconds": 138.4617898,
+      "started_utc": "2026-11-21T09:53:53.96038895Z",
+      "finished_utc": "2026-11-21T09:56:12.270267404Z",
+      "exit_code": 0,
+      "oom_killed": false,
+      "duration_scope": "The duration reported by this reference-run record; do not sum shard durations or substitute it for solver runtime. If resumed, checkpoint history remains relevant.",
+      "evidence_file": "dev1m/reference-run.json"
+    },
+    "final60m": {
+      "purpose": "Independent reference verification, NOT solver performance or official scoring",
+      "container_seconds": 2037.3967888,
+      "client_monotonic_seconds": 2038.0255061,
+      "started_utc": "2026-11-21T09:59:11.729500434Z",
+      "finished_utc": "2026-11-21T10:33:09.126289213Z",
+      "exit_code": 0,
+      "oom_killed": false,
+      "duration_scope": "The duration reported by this reference-run record; do not sum shard durations or substitute it for solver runtime. If resumed, checkpoint history remains relevant.",
+      "evidence_file": "final60m/reference-run.json"
+    }
+  },
+  "local_solver_performance_separate_from_reference": {
+    "environment": "Local shared Docker Desktop VM, 8 CPU quota and 6 GiB container limit; not the official 24 GiB environment",
+    "valid_final60m_runs": [
+      {
+        "name": "final60m-v4-r2",
+        "container_seconds": 54.3672655,
+        "client_monotonic_seconds": 54.6549518,
+        "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+        "cpu_quota": 8,
+        "memory_limit": "6g",
+        "evidence_file": "solver-performance/final60m-v4-r2-run.json"
+      },
+      {
+        "name": "final60m-v4-r3",
+        "container_seconds": 56.1888216,
+        "client_monotonic_seconds": 56.4651356,
+        "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+        "cpu_quota": 8,
+        "memory_limit": "6g",
+        "evidence_file": "solver-performance/final60m-v4-r3-run.json"
+      }
+    ],
+    "three_run_median_available": false,
+    "note": "Only r2/r3 are included. First successful v4 wall timing was invalidated. Reference verification durations must not be substituted for, added to, or averaged with solver runtimes."
+  },
+  "packaging_scope": {
+    "data_or_parquet_copied": false,
+    "checkpoints_copied": false,
+    "reference_or_solver_executed": false,
+    "solver_sources_modified": false,
+    "only_validation_package_created": true
+  },
+  "source_files": {
+    "dev1m/configuration.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\reference-dev-v4-full\\configuration.json",
+    "dev1m/final-report.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\reference-dev-v4-full\\final-report.json",
+    "dev1m/reference-run.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\results\\dev-v4-full-reference-run.json",
+    "final60m/configuration.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\reference-final60m-full\\configuration.json",
+    "final60m/final-report.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\reference-final60m-full\\final-report.json",
+    "final60m/reference-run.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\results\\final60m-full-reference-run.json",
+    "tools/full_oracle_check.py": "D:\\Codex_Project\\build2\\shopping-sessions-work\\full_oracle_check.py",
+    "tools/oracle.py": "D:\\Codex_Project\\build2\\shopping-sessions-solution\\tests\\oracle.py",
+    "final60m/input-copy-sha256.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\results\\final60m-reference-input-copy.json",
+    "solver-performance/final60m-v4-r2-run.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\results\\final60m-v4-r2-run.json",
+    "solver-performance/final60m-v4-r3-run.json": "D:\\Codex_Project\\build2\\shopping-sessions-work\\results\\final60m-v4-r3-run.json"
+  },
+  "package_files": {
+    ".gitattributes": {
+      "bytes": 72,
+      "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f"
+    },
+    "dev1m/configuration.json": {
+      "bytes": 8160,
+      "sha256": "14f4e28e115d4a83fcf7514687392ea7e9cc7064f6af2452efa4fd60b007f9bc"
+    },
+    "dev1m/final-report.json": {
+      "bytes": 8727,
+      "sha256": "86ad72b16a67c1fa0fd7484cc21740f7da293f75717ef3a5c92f8c0ec57c28b4"
+    },
+    "dev1m/reference-run.json": {
+      "bytes": 627,
+      "sha256": "02d77b45cee18ffc64ea90dfedf9338d6802ef0ca898fd719999a0a408b82ab3"
+    },
+    "final60m/configuration.json": {
+      "bytes": 7747,
+      "sha256": "69221e5082b0a1f9c838b48b02b4f1aca8f8add6c19946589386f6d9dd3bf800"
+    },
+    "final60m/final-report.json": {
+      "bytes": 64616,
+      "sha256": "861d1351a4cb369404b0c66b4ef57f38c2c7dadd45e3dd328c4c7a318be1b175"
+    },
+    "final60m/input-copy-sha256.json": {
+      "bytes": 18928,
+      "sha256": "aac9feb8968e2d4359ec3ad93e711f3d3e7c81ea48748052df096596579b2c71"
+    },
+    "final60m/reference-run.json": {
+      "bytes": 634,
+      "sha256": "295569386b19eedcb783bd181ed4dd68922af8df5d674995d55c8f76a711847d"
+    },
+    "solver-performance/final60m-v4-r2-run.json": {
+      "bytes": 550,
+      "sha256": "1d0475bcf9cb1e33e05540f1c94ac71c7fd506caec5d77eb3f27859c0a48c7d4"
+    },
+    "solver-performance/final60m-v4-r3-run.json": {
+      "bytes": 550,
+      "sha256": "b95c470abd782bb2a66d222500944aadeabed4885ac3649dbe72983aa7ec5399"
+    },
+    "tools/README.md": {
+      "bytes": 2105,
+      "sha256": "24fd0e933b3bc88c2e280c904d86547d68880b6f0e244bd9cda9590235db7782"
+    },
+    "tools/full_oracle_check.py": {
+      "bytes": 35460,
+      "sha256": "fb90211ba688eef6a39af1f1a8e9d7f34cbe84339ace23e1c101005812d0954a"
+    },
+    "tools/oracle.py": {
+      "bytes": 16354,
+      "sha256": "d1afef54e524328bd2fbd630c8a14570a9218d0f1305b5aed5504b32d91eb91f"
+    }
+  }
+}

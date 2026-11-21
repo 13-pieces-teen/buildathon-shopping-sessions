@@ -1,0 +1,13 @@
+{
+  "name": "dev-v4-full",
+  "purpose": "Independent reference verification, not solver performance",
+  "image": "sha256:858a0e7981c01b863b02a0010507fe903214a85751ab2d3673e7c076004daafe",
+  "container_id": "968e3343bc85c25cb43ef5143b725f6e8bc55ba3ab89cdc3a80f7c686662d0e6",
+  "exit_code": 0,
+  "oom_killed": false,
+  "container_seconds": 138.3098784,
+  "client_monotonic_seconds": 138.4617898,
+  "started_utc": "2026-11-21T09:53:53.96038895Z",
+  "finished_utc": "2026-11-21T09:56:12.270267404Z",
+  "reference_report": "D:\\Codex_Project\\build2\\shopping-sessions-work\\reference-dev-v4-full\\final-report.json"
+}
