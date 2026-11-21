@@ -63,10 +63,11 @@ void id_storage_checks() {
     std::map<std::string,std::pair<uint64_t,uint64_t>> actual;
     const char* shared_address=nullptr;
     for(const auto& partition:dataset.events)for(const auto& event:partition){
-      auto& totals=actual[std::string(event.user)];++totals.first;totals.second+=event.price;
-      if(event.user=="shared_unlinked"){
-        if(shared_address)require(shared_address==event.user.data(),"unlinked user is interned exactly once");
-        shared_address=event.user.data();
+      const SV user=dataset.person_name(event.user);
+      auto& totals=actual[std::string(user)];++totals.first;totals.second+=event.price;
+      if(user=="shared_unlinked"){
+        if(shared_address)require(shared_address==user.data(),"unlinked user is interned exactly once");
+        shared_address=user.data();
       }
     }
     require(actual==expected,"short/long/quoted event ID dedup regression");
@@ -104,13 +105,23 @@ int main(int argc,char** argv) {
       using Totals=std::pair<uint64_t,uint64_t>;
       std::map<std::string,Totals> actual,expected;
       for(const auto& partition:dataset.events)for(const auto& event:partition){
-        auto& v=actual[std::string(event.user)];++v.first;v.second+=event.price;
+        auto& v=actual[std::string(dataset.person_name(event.user))];++v.first;v.second+=event.price;
         require(event.price ? event.category<dataset.categories.size() : event.category==INVALID,"category contract");
       }
+      // Partition choice is an implementation detail (string hash or compact
+      // person ID). The semantic requirement is that all events AND clicks for
+      // one canonical person are co-located, so attribution can see both.
+      std::map<std::string,std::pair<uint32_t,size_t>> identity_by_person;
+      auto check_person_partition=[&](uint32_t user_id,size_t partition) {
+        const SV user=dataset.person_name(user_id);
+        auto [it,inserted]=identity_by_person.try_emplace(std::string(user),user_id,partition);
+        require(inserted||it->second.first==user_id,"canonical person has one encoded identity");
+        require(inserted||it->second.second==partition,"canonical person event/click co-location");
+      };
       for(size_t p=0;p<dataset.events.size();++p)for(const auto& event:dataset.events[p])
-        require(hash_sv(event.user)%dataset.events.size()==p,"event partition");
+        check_person_partition(event.user,p);
       for(size_t p=0;p<dataset.clicks.size();++p)for(const auto& click:dataset.clicks[p])
-        require(hash_sv(click.user)%dataset.clicks.size()==p,"click partition");
+        check_person_partition(click.user,p);
       std::ifstream input(entry.path()/"expected"/"user_daily.csv",std::ios::binary);
       std::string line;std::getline(input,line);
       while(std::getline(input,line)){

@@ -1,5 +1,6 @@
 #include "types.hpp"
 #include "parse.hpp"
+#include "identity.hpp"
 #include <array>
 #include <atomic>
 #include <chrono>
@@ -113,89 +114,23 @@ template<class T> void flatten(std::vector<std::vector<T>>& fragments,std::vecto
   }
   std::vector<std::vector<T>>().swap(fragments);
 }
-struct HashedId {SV value;uint64_t hash;};
-struct IdentityHash {
-  using is_transparent=void;
-  size_t operator()(SV value)const{return hash_sv(value);}
-  size_t operator()(HashedId value)const{return value.hash;}
-};
-struct IdentityEqual {
-  using is_transparent=void;
-  bool operator()(SV a,SV b)const{return a==b;}
-  bool operator()(SV a,HashedId b)const{return a==b.value;}
-  bool operator()(HashedId a,SV b)const{return a.value==b;}
-};
-struct InternPool final:Storage {
-  struct Shard {
-    std::mutex mutex;
-    // deque insertion preserves references, including short-string storage.
-    std::deque<std::string> strings;
-    std::unordered_set<SV,IdentityHash,IdentityEqual> values;
-  };
-  std::vector<Shard> shards;
-  explicit InternPool(unsigned count):shards(count){}
-  SV intern(SV value,uint64_t hash) {
-    auto& shard=shards[hash%shards.size()];
-    std::lock_guard lock(shard.mutex);
-    auto found=shard.values.find(HashedId{value,hash});
-    if(found!=shard.values.end())return *found;
-    shard.strings.emplace_back(value);
-    SV owned=shard.strings.back();
-    shard.values.emplace(owned);
-    return owned;
-  }
-};
-struct Identities {
-  std::unordered_map<SV,uint32_t,IdentityHash,IdentityEqual> index;
-  std::vector<uint32_t> parent,weight;
-  std::vector<SV> names;
-  std::vector<uint32_t> partition_for_id;
-  unsigned partitions=1;
-  InternPool* unlinked=nullptr;
-  uint32_t add(SV name) {
-    auto [it,inserted]=index.try_emplace(name,static_cast<uint32_t>(names.size()));
-    if(inserted){parent.push_back(it->second);weight.push_back(1);names.push_back(name);}
-    return it->second;
-  }
-  uint32_t root(uint32_t v) {
-    while(parent[v]!=v){parent[v]=parent[parent[v]];v=parent[v];}return v;
-  }
-  void join(SV a,SV b) {
-    uint32_t x=root(add(a)),y=root(add(b));if(x==y)return;
-    if(weight[x]<weight[y])std::swap(x,y);
-    parent[y]=x;weight[x]+=weight[y];if(names[y]<names[x])names[x]=names[y];
-  }
-  void freeze(unsigned count) {
-    partitions=count;
-    for(uint32_t i=0;i<parent.size();++i)parent[i]=root(i);
-    for(uint32_t i=0;i<parent.size();++i)names[i]=names[parent[i]];
-    partition_for_id.resize(names.size());
-    for(size_t i=0;i<names.size();++i)partition_for_id[i]=hash_sv(names[i])%partitions;
-    std::vector<uint32_t>().swap(parent);std::vector<uint32_t>().swap(weight);
-  }
-  std::pair<SV,uint32_t> canonical(SV user)const {
-    const uint64_t hash=hash_sv(user);
-    auto it=index.find(HashedId{user,hash});
-    if(it==index.end())return {unlinked->intern(user,hash),static_cast<uint32_t>(hash%partitions)};
-    return {names[it->second],partition_for_id[it->second]};
-  }
-};
-// All references remain valid because Dataset owns every source mmap.
+// Parse each complete row once. Business-invalid rows still participate in
+// event-ID deduplication: an invalid earliest copy must suppress later copies.
+// Canonical integer IDs make the raw descriptor compact and independent of the
+// event CSV's user-name bytes. Short event IDs also avoid random source rereads.
 struct RawEvent {
-  const char* line;
+  std::array<char,16> key;
   uint64_t hash;
-  int64_t ingest;
-  uint32_t length,id_length;
-  std::array<char,16> inline_id;
-  SV id()const {
-    // The complete short key was copied while this source line was hot. Never
-    // dereference the CSV mmap during short-key equality checks; at full scale
-    // those pages may have been evicted by the resident raw records.
-    if(id_length<=inline_id.size())return SV(inline_id.data(),id_length);
-    return SV(line+(*line=='"'),id_length); // exact, untruncated long-key fallback
+  int64_t ingest,ts;
+  uint32_t user,price,category,id_length;
+  SV id() const {
+    if(id_length<=key.size())return SV(key.data(),id_length);
+    const char* pointer;
+    std::memcpy(&pointer,key.data(),sizeof(pointer));
+    return SV(pointer,id_length);
   }
 };
-static_assert(sizeof(RawEvent)==48);
+static_assert(sizeof(RawEvent)==56);
 SV json_string(SV input,SV key) {
   std::string needle;
   needle.reserve(key.size()+2);needle.push_back('"');needle.append(key);needle.push_back('"');
@@ -260,18 +195,40 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
   std::atomic<uint64_t> parsed{0},surviving{0};
   parallel(event_chunks.size(),threads,[&](size_t task,unsigned){
     auto& entries=raw[task];
-    // This is only a capacity hint. Long or short arbitrary IDs still follow
-    // the same parser, and vector growth accommodates every record length.
-    entries.reserve(static_cast<size_t>(event_chunks[task].end-event_chunks[task].begin)/128);
+    // Count physical lines cheaply up front to allocate once, avoiding repeated
+    // growth/copy/shrink of the much larger parsed descriptors.
+    const auto chunk=event_chunks[task];
+    const size_t line_count=std::count(chunk.begin,chunk.end,'\n')+
+        (chunk.begin!=chunk.end&&chunk.end[-1]!='\n');
+    entries.reserve(line_count);
     lines(event_chunks[task],[&](SV line){
       std::array<SV,7> f;
       if(!parse::csv(line,f)||f[0].empty())return;
       int64_t ingest;
       if(!parse::timestamp(f[3],ingest))return; // ingest_ts is guaranteed valid F1.
-      if(line.size()>UINT32_MAX||f[0].size()>UINT32_MAX)throw std::runtime_error("CSV row exceeds 4 GiB");
-      uint64_t h=hash_sv(f[0]);
-      RawEvent entry{line.data(),h,ingest,static_cast<uint32_t>(line.size()),static_cast<uint32_t>(f[0].size()),{}};
-      if(f[0].size()<=entry.inline_id.size())std::memcpy(entry.inline_id.data(),f[0].data(),f[0].size());
+      if(f[0].size()>UINT32_MAX)throw std::runtime_error("Event ID exceeds 4 GiB");
+      RawEvent entry{};
+      entry.hash=hash_sv(f[0]);entry.ingest=ingest;
+      entry.id_length=static_cast<uint32_t>(f[0].size());
+      entry.price=INVALID;entry.category=INVALID;entry.user=INVALID;
+      if(f[0].size()<=entry.key.size())std::memcpy(entry.key.data(),f[0].data(),f[0].size());
+      else {const char* pointer=f[0].data();std::memcpy(entry.key.data(),&pointer,sizeof(pointer));}
+      // Precompute validity, but NEVER remove a business-invalid candidate.
+      const auto validate=[&]() {
+        if(f[1].empty()||f[5].empty())return;
+        int64_t ts;
+        if(!parse::timestamp(f[2],ts)||ts<data.window_start||ts>=data.window_end)return;
+        if(entry.ingest-ts>DAY)return;
+        uint32_t price=0,category=INVALID;
+        if(f[4]=="purchase") {
+          uint64_t value;if(!parse::number(f[6],10000000,value)||value==0)return;
+          price=static_cast<uint32_t>(value);
+          auto product=products.find(f[5]);category=product==products.end()?unknown:product->second;
+        } else if(f[4]!="view"&&f[4]!="cart")return;
+        entry.ts=ts;entry.user=identities.canonical_id(f[1]);
+        entry.price=price;entry.category=category;
+      };
+      validate();
       entries.push_back(entry);
     });
     compact(entries); // no further mutation of this vector's capacity
@@ -293,8 +250,8 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
       while(table[slot]){
         RawEvent* old=table[slot];
         if(old->hash==candidate->hash&&old->id()==candidate->id()){
-          if(candidate->ingest<old->ingest){old->length=0;table[slot]=candidate;}
-          else candidate->length=0;
+          if(candidate->ingest<old->ingest){old->price=INVALID;table[slot]=candidate;}
+          else candidate->price=INVALID;
           break;
         }
         slot=(slot+1)&(table_size-1);
@@ -309,20 +266,9 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
     auto& entries=raw[task];
     std::vector<std::vector<Event>> local(partitions);uint64_t count=0;
     for(const auto& winner:entries){
-      if(!winner.length)continue; // a syntactically valid row is never zero bytes
-      std::array<SV,7> f;
-      parse::csv(SV(winner.line,winner.length),f);
-      if(f[1].empty()||f[5].empty())continue;
-      int64_t ts;
-      if(!parse::timestamp(f[2],ts)||ts<data.window_start||ts>=data.window_end)continue;
-      if(winner.ingest-ts>DAY)continue;
-      uint32_t price=0,cat=INVALID;
-      if(f[4]=="purchase"){
-        uint64_t value;if(!parse::number(f[6],10000000,value)||value==0)continue;
-        price=static_cast<uint32_t>(value);auto it=products.find(f[5]);cat=it==products.end()?unknown:it->second;
-      }else if(f[4]!="view"&&f[4]!="cart")continue;
-      auto [user,partition]=identities.canonical(f[1]);
-      local[partition].push_back({user,ts,price,cat});++count;
+      if(winner.price==INVALID)continue;
+      const uint32_t partition=winner.user%partitions;
+      local[partition].push_back({winner.user,winner.ts,winner.price,winner.category});++count;
     }
     std::vector<RawEvent>().swap(entries);
     for(unsigned p=0;p<partitions;++p)stage(event_fragments[p],local[p],output_locks[p]);
@@ -345,8 +291,8 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
       if(!parse::csv(line,f)||f[0].empty()||f[1].empty())return;
       auto campaign=campaigns.find(f[2]);if(campaign==campaigns.end())return;
       int64_t ts;if(!parse::timestamp(f[3],ts)||ts<data.window_start-WEEK||ts>=data.window_end)return;
-      auto [user,partition]=identities.canonical(f[1]);
-      local[partition].push_back({user,f[0],ts,campaign->second});
+      const uint32_t user=identities.canonical_id(f[1]);
+      local[user%partitions].push_back({user,f[0],ts,campaign->second});
     });
     // Identical click duplicates are intentionally retained: selecting the latest
     // click and unioning each campaign's eligible intervals are both idempotent.
@@ -355,6 +301,10 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
   progress("clicks parsed");
   parallel(partitions,threads,[&](size_t p,unsigned){flatten(click_fragments[p],data.clicks[p]);});
   progress("click partitions compacted");
+  data.linked_names=std::move(identities.names);
+  data.unlinked_names=identities.unlinked->names_snapshot();
+  data.unlinked_shift=identities.unlinked->shard_bits();
+  data.unlinked_mask=identities.unlinked->shard_mask();
   std::cerr<<"events parsed="<<data.parsed_events<<" surviving="<<data.surviving_events<<" linked_ids="<<identities.index.size()<<'\n';
   return data;
 }

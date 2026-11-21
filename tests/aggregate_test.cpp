@@ -44,9 +44,9 @@ Snapshot reference(const Dataset& data) {
   std::map<std::string, std::vector<Event>> people;
   std::map<std::string, std::vector<Click>> ad_clicks;
   for (const auto& bucket : data.events) for (const Event& e : bucket)
-    people[std::string(e.user)].push_back(e);
+    people[std::string(data.person_name(e.user))].push_back(e);
   for (const auto& bucket : data.clicks) for (const Click& c : bucket)
-    ad_clicks[std::string(c.user)].push_back(c);
+    ad_clicks[std::string(data.person_name(c.user))].push_back(c);
   Snapshot out;
   std::map<UserKey, std::map<uint32_t, int64_t>> categories;
   for (auto& [user, events] : people) {
@@ -109,6 +109,9 @@ Dataset base(unsigned partitions) {
     data.campaigns.push_back({"c_" + std::to_string(i), "channel"});
   data.events.resize(partitions);
   data.clicks.resize(partitions);
+  data.unlinked_shift=3;
+  data.unlinked_mask=7;
+  data.unlinked_names.resize(8);
   data.window_start = -40 * DAY;
   data.window_end = 40 * DAY;
   return data;
@@ -116,12 +119,28 @@ Dataset base(unsigned partitions) {
 SV str(Dataset& data, std::string s) {
   return static_cast<Strings*>(data.storage[0].get())->add(std::move(s));
 }
-void event(Dataset& data, SV user, int64_t ts, uint32_t price = 0, uint32_t category = INVALID) {
-  data.events[hash_sv(user) % data.events.size()].push_back({user, ts, price, category});
+uint32_t person(Dataset& data, std::string value, bool unlinked=false, unsigned shard=0) {
+  const SV name=str(data,std::move(value));
+  uint32_t id;
+  if(unlinked) {
+    shard&=data.unlinked_mask;
+    auto& names=data.unlinked_names.at(shard);
+    const auto local=static_cast<uint32_t>(names.size());
+    names.push_back(name);
+    id=(uint32_t{1}<<31)|(local<<data.unlinked_shift)|shard;
+  }else{
+    id=static_cast<uint32_t>(data.linked_names.size());
+    data.linked_names.push_back(name);
+  }
+  assert(data.person_name(id)==name);
+  return id;
 }
-void click(Dataset& data, SV user, std::string id, int64_t ts, uint32_t campaign, bool duplicate = false) {
+void event(Dataset& data, uint32_t user, int64_t ts, uint32_t price = 0, uint32_t category = INVALID) {
+  data.events[user % data.events.size()].push_back({user, ts, price, category});
+}
+void click(Dataset& data, uint32_t user, std::string id, int64_t ts, uint32_t campaign, bool duplicate = false) {
   Click c{user, str(data, std::move(id)), ts, campaign};
-  auto& bucket = data.clicks[hash_sv(user) % data.clicks.size()];
+  auto& bucket = data.clicks[user % data.clicks.size()];
   bucket.push_back(c);
   if (duplicate) bucket.push_back(c);
 }
@@ -142,7 +161,7 @@ void verify(Dataset& data, unsigned threads) {
 int main() {
   {
     Dataset data = base(7);
-    const SV user = str(data, " u");
+    const uint32_t user = person(data, " u");
     event(data, user, -60000);
     event(data, user, 0, 100, 0);
     event(data, user, GAP, 100, 1);
@@ -163,7 +182,7 @@ int main() {
   }
   {
     Dataset data = base(2);
-    const SV user = str(data, "u");
+    const uint32_t user = person(data, "u", true, 7);
     // Two disjoint intervals, touching endpoints, days without sessions,
     // repeated clicks, and a campaign present only as an assist.
     for (int day : {-21, -14, -7, 0, 1, 7, 8, 14, 20, 21})
@@ -178,13 +197,20 @@ int main() {
   std::mt19937_64 rng(0x53a95);
   for (unsigned trial = 0; trial < 300; ++trial) {
     Dataset data = base(1 + rng() % 17);
+    data.unlinked_shift=trial%5;
+    data.unlinked_mask=(uint32_t{1}<<data.unlinked_shift)-1;
+    data.unlinked_names.clear();
+    data.unlinked_names.resize(size_t(1)<<data.unlinked_shift);
     if (trial % 3 == 0) {
       data.window_start = 0;
       data.window_end = 0; // Force sparse aggregation, including negative days.
     }
     const std::vector<std::string> names{"u", "U", " u", "u ", "\xc3\xa9", "u10", "u2"};
-    for (const auto& name : names) {
-      const SV user = str(data, name);
+    for (size_t name_at=0;name_at<names.size();++name_at) {
+      // Mix linked low IDs and shard-encoded high IDs. Their numeric ordering
+      // deliberately differs from the byte ordering used by the simple oracle.
+      const uint32_t user=person(data,names[name_at],name_at%2==0,
+                                 static_cast<unsigned>(name_at*5+trial));
       for (unsigned i = 0, n = rng() % 140; i < n; ++i) {
         const int64_t ts = (int64_t(rng() % 61) - 30) * DAY +
                            int64_t(rng() % 8) * GAP + int64_t(rng() % 3);
@@ -210,5 +236,5 @@ int main() {
     Dataset data = base(0);
     assert(snapshot(aggregate(data, 1)) == Snapshot{});
   }
-  std::cout << "PASS: edge cases, 300 randomized oracle comparisons, and empty inputs\n";
+  std::cout << "PASS: uint32 linked/unlinked IDs, edge cases, 300 randomized oracle comparisons, and empty inputs\n";
 }

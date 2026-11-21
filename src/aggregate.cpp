@@ -141,7 +141,8 @@ class Worker {
                      std::vector<UserRow>& output) {
     sessions_.clear();
     days_.clear();
-    UserRow row{events[begin].user, 0, 0, 0, 0, INVALID};
+    const SV name=data_.person_name(events[begin].user);
+    UserRow row{name, 0, 0, 0, 0, INVALID};
     int64_t previous = 0;
     for (size_t i = begin; i < end; ++i) {
       const Event& event = events[i];
@@ -150,7 +151,7 @@ class Worker {
         const int32_t day = day_of(event.ts);
         if (row.sessions && day != row.day) {
           finish_day(row, output);
-          row = {event.user, day, 0, 0, 0, INVALID};
+          row = {name, day, 0, 0, 0, INVALID};
         }
         row.day = day;
         ++row.sessions;
@@ -260,21 +261,19 @@ public:
       return;
     }
     std::sort(events.begin(), events.end(), [](const Event& a, const Event& b) {
-      const int person = compare_bytes(a.user, b.user);
-      return person ? person < 0 : a.ts < b.ts;
+      return a.user!=b.user ? a.user<b.user : a.ts<b.ts;
     });
     std::sort(clicks.begin(), clicks.end(), [](const Click& a, const Click& b) {
-      const int person = compare_bytes(a.user, b.user);
       // attribute() explicitly selects the minimum click ID at a tied time;
       // interval unions depend only on time, so sorting tied IDs is redundant.
-      return person ? person < 0 : a.ts < b.ts;
+      return a.user!=b.user ? a.user<b.user : a.ts<b.ts;
     });
     size_t event_at = 0, click_at = 0;
     while (event_at < events.size()) {
-      const SV user = events[event_at].user;
+      const uint32_t user = events[event_at].user;
       size_t event_end = event_at + 1;
       while (event_end < events.size() && events[event_end].user == user) ++event_end;
-      while (click_at < clicks.size() && bytes_less(clicks[click_at].user, user)) ++click_at;
+      while (click_at < clicks.size() && clicks[click_at].user<user) ++click_at;
       size_t click_end = click_at;
       while (click_end < clicks.size() && clicks[click_end].user == user) ++click_end;
       make_sessions(events, event_at, event_end, output);

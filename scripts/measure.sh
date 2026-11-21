@@ -3,6 +3,11 @@
 set +e
 timeout --signal=TERM --kill-after=10 "${RUN_TIMEOUT:-180}" /app/run.sh
 status=$?
+if [ -r /sys/fs/cgroup/cpu.stat ]; then
+  while read -r key value; do
+    printf 'cgroup_cpu_%s=%s\n' "$key" "$value" >&2
+  done < /sys/fs/cgroup/cpu.stat
+fi
 if [ -r /sys/fs/cgroup/memory.peak ]; then
   printf 'cgroup_memory_peak_bytes=' >&2
   cat /sys/fs/cgroup/memory.peak >&2
