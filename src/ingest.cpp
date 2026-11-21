@@ -80,23 +80,55 @@ template<class Fn> void parallel(size_t count,unsigned threads,Fn&& fn) {
   std::exception_ptr error;std::mutex error_mutex;
   std::vector<std::thread> pool;
   unsigned n=std::min<size_t>(std::max(1u,threads),count);
-  for(unsigned t=0;t<n;++t)pool.emplace_back([&,t] {
+  auto work=[&](unsigned t) {
     try {while(!failed) {size_t i=next.fetch_add(1,std::memory_order_relaxed);if(i>=count)break;fn(i,t);}}
     catch(...) {std::lock_guard lock(error_mutex);if(!error)error=std::current_exception();failed=true;}
-  });
+  };
+  // Retain and join launched threads even if a later thread construction fails.
+  try {for(unsigned t=1;t<n;++t)pool.emplace_back(work,t);}
+  catch(...) {failed=true;for(auto& t:pool)t.join();throw;}
+  if(n)work(0);
   for(auto& t:pool)t.join();
   if(error)std::rethrow_exception(error);
 }
-template<class T> void append(std::vector<T>& dst,const std::vector<T>& src) {
-  if(src.empty())return;
-  size_t needed=dst.size()+src.size();
-  if(needed>dst.capacity())dst.reserve(std::max(needed,dst.capacity()+dst.capacity()/8+1024));
-  dst.insert(dst.end(),src.begin(),src.end());
+template<class T> void compact(std::vector<T>& values) {
+  // Keep staged fragments within 12.5% of their live payload; compaction only
+  // copies a small chunk, instead of repeatedly copying an ever-growing bucket.
+  if(values.capacity()>values.size()+values.size()/8)values.shrink_to_fit();
 }
+template<class T> void stage(std::vector<std::vector<T>>& fragments,
+                            std::vector<T>& values,std::mutex& mutex) {
+  if(values.empty())return;
+  compact(values);
+  std::lock_guard lock(mutex);fragments.push_back(std::move(values));
+}
+template<class T> void flatten(std::vector<std::vector<T>>& fragments,std::vector<T>& output) {
+  size_t count=0;for(const auto& fragment:fragments)count+=fragment.size();
+  output.reserve(count);
+  for(auto& fragment:fragments) {
+    output.insert(output.end(),fragment.begin(),fragment.end());
+    std::vector<T>().swap(fragment);
+  }
+  std::vector<std::vector<T>>().swap(fragments);
+}
+struct HashedId {SV value;uint64_t hash;};
+struct IdentityHash {
+  using is_transparent=void;
+  size_t operator()(SV value)const{return hash_sv(value);}
+  size_t operator()(HashedId value)const{return value.hash;}
+};
+struct IdentityEqual {
+  using is_transparent=void;
+  bool operator()(SV a,SV b)const{return a==b;}
+  bool operator()(SV a,HashedId b)const{return a==b.value;}
+  bool operator()(HashedId a,SV b)const{return a.value==b;}
+};
 struct Identities {
-  std::unordered_map<SV,uint32_t,SVHash> index;
+  std::unordered_map<SV,uint32_t,IdentityHash,IdentityEqual> index;
   std::vector<uint32_t> parent,weight;
   std::vector<SV> names;
+  std::vector<uint32_t> partition_for_id;
+  unsigned partitions=1;
   uint32_t add(SV name) {
     auto [it,inserted]=index.try_emplace(name,static_cast<uint32_t>(names.size()));
     if(inserted){parent.push_back(it->second);weight.push_back(1);names.push_back(name);}
@@ -110,12 +142,20 @@ struct Identities {
     if(weight[x]<weight[y])std::swap(x,y);
     parent[y]=x;weight[x]+=weight[y];if(names[y]<names[x])names[x]=names[y];
   }
-  void freeze() {
+  void freeze(unsigned count) {
+    partitions=count;
     for(uint32_t i=0;i<parent.size();++i)parent[i]=root(i);
     for(uint32_t i=0;i<parent.size();++i)names[i]=names[parent[i]];
+    partition_for_id.resize(names.size());
+    for(size_t i=0;i<names.size();++i)partition_for_id[i]=hash_sv(names[i])%partitions;
     std::vector<uint32_t>().swap(parent);std::vector<uint32_t>().swap(weight);
   }
-  SV canonical(SV user)const {auto it=index.find(user);return it==index.end()?user:names[it->second];}
+  std::pair<SV,uint32_t> canonical(SV user)const {
+    const uint64_t hash=hash_sv(user);
+    auto it=index.find(HashedId{user,hash});
+    if(it==index.end())return {user,static_cast<uint32_t>(hash%partitions)};
+    return {names[it->second],partition_for_id[it->second]};
+  }
 };
 // All references remain valid because Dataset owns every source mmap.
 struct RawEvent {
@@ -168,17 +208,25 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
   for(auto chunk:map_directory(data,base/"links"))lines(chunk,[&](SV line){
     std::array<SV,2> f;if(parse::csv(line,f)&&!f[0].empty()&&!f[1].empty())identities.join(f[0],f[1]);
   });
-  identities.freeze();progress("links");
+  identities.freeze(partitions);progress("links");
 
   // Bucket globally by event_id BEFORE applying user, time, type or price filters.
   // A later valid copy may not rescue an invalid earliest copy.
   unsigned buckets=std::max(64u,threads*16);
-  std::vector<std::vector<RawEvent>> raw(buckets);
-  std::vector<std::mutex> raw_locks(buckets),output_locks(partitions);
+  // Raw records retain input order. Buckets contain only stable pointers into
+  // completed chunks, so dedup never dictates the order of CSV re-reading.
   auto event_chunks=map_directory(data,base/"events");
+  std::vector<std::vector<RawEvent>> raw(event_chunks.size());
+  std::vector<std::vector<std::vector<RawEvent*>>> raw_buckets(buckets);
+  std::vector<std::vector<std::vector<Event>>> event_fragments(partitions);
+  std::vector<std::vector<std::vector<Click>>> click_fragments(partitions);
+  std::vector<std::mutex> raw_locks(buckets),output_locks(partitions);
   std::atomic<uint64_t> parsed{0},surviving{0};
   parallel(event_chunks.size(),threads,[&](size_t task,unsigned){
-    std::vector<std::vector<RawEvent>> local(buckets);uint64_t count=0;
+    auto& entries=raw[task];
+    // This is only a capacity hint. Long or short arbitrary IDs still follow
+    // the same parser, and vector growth accommodates every record length.
+    entries.reserve(static_cast<size_t>(event_chunks[task].end-event_chunks[task].begin)/128);
     lines(event_chunks[task],[&](SV line){
       std::array<SV,7> f;
       if(!parse::csv(line,f)||f[0].empty())return;
@@ -186,36 +234,45 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
       if(!parse::timestamp(f[3],ingest))return; // ingest_ts is guaranteed valid F1.
       if(line.size()>UINT32_MAX||f[0].size()>UINT32_MAX)throw std::runtime_error("CSV row exceeds 4 GiB");
       uint64_t h=hash_sv(f[0]);
-      local[h%buckets].push_back({line.data(),h,ingest,static_cast<uint32_t>(line.size()),static_cast<uint32_t>(f[0].size())});
-      ++count;
+      entries.push_back({line.data(),h,ingest,static_cast<uint32_t>(line.size()),static_cast<uint32_t>(f[0].size())});
     });
-    for(unsigned b=0;b<buckets;++b){std::lock_guard lock(raw_locks[b]);append(raw[b],local[b]);}
-    parsed.fetch_add(count,std::memory_order_relaxed);
+    compact(entries); // no further mutation of this vector's capacity
+    std::vector<std::vector<RawEvent*>> local(buckets);
+    for(auto& entry:entries)local[entry.hash%buckets].push_back(&entry);
+    for(unsigned b=0;b<buckets;++b)stage(raw_buckets[b],local[b],raw_locks[b]);
+    parsed.fetch_add(entries.size(),std::memory_order_relaxed);
   });
   data.parsed_events=parsed;progress("events parsed");
 
   parallel(buckets,threads,[&](size_t bucket,unsigned){
-    auto& entries=raw[bucket];
-    if(entries.empty())return;
-    if(entries.size()>=UINT32_MAX)throw std::runtime_error("event bucket exceeds index capacity");
-    size_t table_size=1;while(table_size<entries.size()*3/2+1)table_size*=2;
-    std::vector<uint32_t> table(table_size,INVALID);
-    for(uint32_t i=0;i<entries.size();++i){
-      const auto& candidate=entries[i];size_t slot=(candidate.hash>>32)&(table_size-1);
-      while(table[slot]!=INVALID){
-        auto& old=entries[table[slot]];
-        if(old.hash==candidate.hash&&old.id()==candidate.id()){
-          if(candidate.ingest<old.ingest)table[slot]=i;
+    auto& fragments=raw_buckets[bucket];
+    size_t count=0;for(const auto& fragment:fragments)count+=fragment.size();
+    if(!count)return;
+    size_t table_size=1;while(table_size<count*3/2+1)table_size*=2;
+    std::vector<RawEvent*> table(table_size,nullptr);
+    for(const auto& fragment:fragments)for(RawEvent* candidate:fragment){
+      size_t slot=(candidate->hash>>32)&(table_size-1);
+      while(table[slot]){
+        RawEvent* old=table[slot];
+        if(old->hash==candidate->hash&&old->id()==candidate->id()){
+          if(candidate->ingest<old->ingest){old->length=0;table[slot]=candidate;}
+          else candidate->length=0;
           break;
         }
         slot=(slot+1)&(table_size-1);
       }
-      if(table[slot]==INVALID)table[slot]=i;
+      if(!table[slot])table[slot]=candidate;
     }
+    std::vector<std::vector<RawEvent*>>().swap(fragments);
+  });
+  progress("events globally deduped");
+
+  parallel(raw.size(),threads,[&](size_t task,unsigned){
+    auto& entries=raw[task];
     std::vector<std::vector<Event>> local(partitions);uint64_t count=0;
-    for(uint32_t i:table){
-      if(i==INVALID)continue;
-      const auto& winner=entries[i];std::array<SV,7> f;
+    for(const auto& winner:entries){
+      if(!winner.length)continue; // a syntactically valid row is never zero bytes
+      std::array<SV,7> f;
       parse::csv(SV(winner.line,winner.length),f);
       if(f[1].empty()||f[5].empty())continue;
       int64_t ts;
@@ -226,14 +283,16 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
         uint64_t value;if(!parse::number(f[6],10000000,value)||value==0)continue;
         price=static_cast<uint32_t>(value);auto it=products.find(f[5]);cat=it==products.end()?unknown:it->second;
       }else if(f[4]!="view"&&f[4]!="cart")continue;
-      SV user=identities.canonical(f[1]);
-      local[hash_sv(user)%partitions].push_back({user,ts,price,cat});++count;
+      auto [user,partition]=identities.canonical(f[1]);
+      local[partition].push_back({user,ts,price,cat});++count;
     }
-    std::vector<RawEvent>().swap(entries);std::vector<uint32_t>().swap(table);
-    for(unsigned p=0;p<partitions;++p){std::lock_guard lock(output_locks[p]);append(data.events[p],local[p]);}
+    std::vector<RawEvent>().swap(entries);
+    for(unsigned p=0;p<partitions;++p)stage(event_fragments[p],local[p],output_locks[p]);
     surviving.fetch_add(count,std::memory_order_relaxed);
   });
-  data.surviving_events=surviving;progress("events deduped and validated");
+  data.surviving_events=surviving;progress("events validated");
+  parallel(partitions,threads,[&](size_t p,unsigned){flatten(event_fragments[p],data.events[p]);});
+  progress("event partitions compacted");
 
   auto click_chunks=map_directory(data,base/"clicks");
   parallel(click_chunks.size(),threads,[&](size_t task,unsigned){
@@ -243,14 +302,16 @@ Dataset load_dataset(const std::string& path,unsigned threads,unsigned partition
       if(!parse::csv(line,f)||f[0].empty()||f[1].empty())return;
       auto campaign=campaigns.find(f[2]);if(campaign==campaigns.end())return;
       int64_t ts;if(!parse::timestamp(f[3],ts)||ts<data.window_start-WEEK||ts>=data.window_end)return;
-      SV user=identities.canonical(f[1]);
-      local[hash_sv(user)%partitions].push_back({user,f[0],ts,campaign->second});
+      auto [user,partition]=identities.canonical(f[1]);
+      local[partition].push_back({user,f[0],ts,campaign->second});
     });
     // Identical click duplicates are intentionally retained: selecting the latest
     // click and unioning each campaign's eligible intervals are both idempotent.
-    for(unsigned p=0;p<partitions;++p){std::lock_guard lock(output_locks[p]);append(data.clicks[p],local[p]);}
+    for(unsigned p=0;p<partitions;++p)stage(click_fragments[p],local[p],output_locks[p]);
   });
   progress("clicks parsed");
+  parallel(partitions,threads,[&](size_t p,unsigned){flatten(click_fragments[p],data.clicks[p]);});
+  progress("click partitions compacted");
   std::cerr<<"events parsed="<<data.parsed_events<<" surviving="<<data.surviving_events<<" linked_ids="<<identities.index.size()<<'\n';
   return data;
 }

@@ -1,5 +1,6 @@
 #include "types.hpp"
 #include <fstream>
+#include <cstdlib>
 #include <filesystem>
 #include <limits>
 #include <stdexcept>
@@ -36,8 +37,16 @@ std::ofstream open(const std::string& path, size_t n) {
 void write_results(const Dataset& data, const Results& results, const std::string& path) {
   std::filesystem::create_directories(path);
   bool wrote = false;
-  for (size_t p = 0; p < results.users.size(); ++p) {
-    const auto& rows = results.users[p];
+  const auto count = std::getenv("NCPU");
+  const size_t output_parts = std::min(results.users.size(), size_t(std::max(1, count ? std::atoi(count) : 8)));
+  for (size_t p = 0; p < output_parts; ++p) {
+    // Compute partitions balance parallel sorting; output files serve a different
+    // purpose. Coalesce them to avoid many tiny filesystem/Parquet operations.
+    size_t row_count = 0;
+    for (size_t i = p; i < results.users.size(); i += output_parts) row_count += results.users[i].size();
+    std::vector<UserRow> rows; rows.reserve(row_count);
+    for (size_t i = p; i < results.users.size(); i += output_parts)
+      rows.insert(rows.end(), results.users[i].begin(), results.users[i].end());
     if (rows.empty()) continue;
     wrote = true;
     auto f = open(path + "/user-" + std::to_string(p) + ".bin", rows.size());

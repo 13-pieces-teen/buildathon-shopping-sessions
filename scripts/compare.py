@@ -32,14 +32,15 @@ def load(root, name):
         parts = []
         for path in paths:
             part = pq.read_table(path)
-            if set(part.column_names) != set(schema.names):
+            if len(part.column_names) != len(schema.names) or set(part.column_names) != set(schema.names):
                 raise ValueError(f"wrong columns: {path}")
             for field in part.schema:
                 expected = schema.field(field.name).type
                 if pa.types.is_integer(expected):
                     valid = pa.types.is_integer(field.type)
                 elif pa.types.is_string(expected):
-                    valid = pa.types.is_string(field.type) or pa.types.is_large_string(field.type) or pa.types.is_dictionary(field.type)
+                    actual = field.type.value_type if pa.types.is_dictionary(field.type) else field.type
+                    valid = pa.types.is_string(actual) or pa.types.is_large_string(actual)
                 else:
                     valid = field.type == expected
                 if not valid:
